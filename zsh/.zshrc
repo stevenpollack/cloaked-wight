@@ -84,4 +84,4 @@ alias sourceZshConfig="source ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 
 # alias for vim r plugin
-alias viM="vim --servername VIM"
+alias vim="vim --servername VIM"
