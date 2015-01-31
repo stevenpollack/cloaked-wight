@@ -32,6 +32,9 @@ Plugin 'sickill/vim-monokai'
 " pivotal's TMUX conf
 Plugin 'pivotal/tmux-config'
 
+" markdown syntax highlighting
+Plugin 'tpope/vim-markdown'
+
 " vim R-plugin
 Plugin 'vim-scripts/Vim-R-plugin'
 
@@ -64,4 +67,4 @@ colorscheme southernlights
 let vimrplugin_underscore = 0
 
 " have VIM open R documentation in a new tab
-let vimrplugin_vimpager = "no"
+let vimrplugin_vimpager = "tabnew"
