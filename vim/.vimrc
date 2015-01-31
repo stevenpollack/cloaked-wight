@@ -41,6 +41,9 @@ Plugin 'vim-scripts/Vim-R-plugin'
 " suggested color scheme: http://www.vim.org/scripts/script.php?script_id=3292
 Plugin 'stevenpollack/vim-southernlights'
 
+" powerline plugin
+Plugin 'bling/vim-airline'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -68,3 +71,23 @@ let vimrplugin_underscore = 0
 
 " have VIM open R documentation in a new tab
 let vimrplugin_vimpager = "tabnew"
+
+" set mouse to allow for scrolling in TMUX
+set mouse=a
+
+" airline settings
+let g:airline_powerline_fonts = 1
+set laststatus=2
+let g:airline_theme='simple'
+
+" wrap at 80 chars
+set wrap
+set textwidth=80 " sets hard wrapping at 80 chars
+set wrapmargin=0 " wraps according to terminal size
+set fo+=t " toggles wrapping on
+
+" highlight characters past the 74th column
+augroup vimrc_autocmds
+  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
+  autocmd BufEnter * match OverLength /\%74v.*/
+augroup END
