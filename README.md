@@ -7,6 +7,8 @@ Dependencies:
 * (`sudo apt get`) tmux
 * (`sudo apt get`) vim
   * vundle
+  * you'll need `gvim` -- (`sudo apt-cache search gvim`)
+    -- for `+clientserver` vim capabilities
 * (`sudo apt get`) zsh
   * oh-my-zsh
 
