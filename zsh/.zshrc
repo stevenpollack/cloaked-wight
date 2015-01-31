@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="avit"
+ZSH_THEME="steeef"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -85,3 +85,9 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 
 # alias for vim r plugin
 alias vim="vim --servername VIM"
+
+# alias for starting tmux in -2
+alias tmux="tmux -2"
+
+# alias for editing .vimrc
+alias vimrc="vim ~/.vimrc"
