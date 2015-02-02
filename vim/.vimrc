@@ -68,6 +68,7 @@ colorscheme southernlights
 
 " disable '_' -> '<-' mapping in r-plugin
 let vimrplugin_underscore = 0
+let vimrplugin_assign = 0
 
 " have VIM open R documentation in a new tab
 let vimrplugin_vimpager = "tabnew"
@@ -79,6 +80,9 @@ set mouse=a
 let g:airline_powerline_fonts = 1
 set laststatus=2
 let g:airline_theme='simple'
+
+" set tab to look like 2 space
+set tabstop=2
 
 " wrap at 80 chars
 set wrap
