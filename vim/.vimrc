@@ -59,6 +59,15 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" turn off .swp files
+set noswapfile
+
+" turn on ruler at (soft) char limit
+set ruler
+
+" switch on row number
+set number 
+
 " enable 256-color support
 set t_Co=256
 
@@ -82,7 +91,7 @@ set laststatus=2
 let g:airline_theme='simple'
 
 " set tab to look like 2 space
-set tabstop=2
+set sw=2 " indent = 2 spacesd
 
 " wrap at 80 chars
 set wrap
@@ -95,3 +104,6 @@ augroup vimrc_autocmds
   autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
   autocmd BufEnter * match OverLength /\%74v.*/
 augroup END
+
+" Show where the next pattern is as you type it
+set incsearch
