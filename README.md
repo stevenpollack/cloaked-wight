@@ -4,7 +4,10 @@ Repo for my various profile and config files
 
 Dependencies:
 
-* (`sudo apt get`) tmux
+* [tmux (>=
+  1.9)](http://stackoverflow.com/questions/25940944/ugrade-tmux-from-1-8-to-1-9-on-ubuntu-14-04)
+* [tmux plugin manager](https://github.com/tmux-plugins/tpm)
+* (`sudo apt get`) xclip
 * (`sudo apt get`) vim
   * vundle
   * you'll need `gvim` -- (`sudo apt-cache search gvim`)
