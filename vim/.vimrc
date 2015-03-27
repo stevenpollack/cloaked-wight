@@ -86,7 +86,7 @@ let vimrplugin_vimpager = "tabnew"
 set mouse=a
 
 " airline settings
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 set laststatus=2
 let g:airline_theme='simple'
 
@@ -107,3 +107,16 @@ augroup END
 
 " Show where the next pattern is as you type it
 set incsearch
+
+" have vimr-plugin call rmarkdown::render
+function! RenderRMarkdown()
+  " set autoread to supress W11 warning:
+  " vim is going to complain about the rmd file already existing...
+  :set autoread
+  " get full file path via %:p
+  ! Rscript -e "rmarkdown::render(commandArgs(TRUE)[2])" --args %:p
+endfunction
+
+" call RenderRMarkdown silently to suppress the "Press ENTER to continue" prompt
+nnoremap <F2> :silent :call RenderRMarkdown() <CR>
+
