@@ -1,4 +1,4 @@
-site_name: Cloaked-Wight
+site_name: cloaked-wight
 repo_url: https://github.com/stevenpollack/cloaked-wight
 docs_dir: "./"
 theme: readthedocs
