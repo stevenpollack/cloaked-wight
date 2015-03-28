@@ -11,7 +11,7 @@ To see if you have `+clientserver`, check out the output to:
 vim +version
 ``` 
 If your version of vim does not have it, you'll probably want `gvim`.
-On Ubuntu 12.04 there are multiple options
+On Ubuntu 14.04 there are multiple options
 ```
 $ sudo apt-cache search gvim
 # vim-gnome - Vi IMproved - enhanced vi editor - with GNOME2 GUI
