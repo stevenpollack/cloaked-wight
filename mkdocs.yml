@@ -6,5 +6,6 @@ pages:
 - ["README.md", "Repo readme"]
 - ["vim/vimr-plugin.md", "vim", "vimr-plugin"]
 - ["vim/vundle.md", "vim", "vundle"]
+- ["R/Rprofile.md", "R", "Rprofie"]
 - ['tmux/tmux-yank.md', 'tmux', 'tmux-yank']
 theme: readthedocs
