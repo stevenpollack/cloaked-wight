@@ -14,3 +14,6 @@ Repo for my various profile and config files
 gconftool --set --type=string /apps/gnome-terminal/profiles/Default/encoding en_US.UTF-8
 ```
 
+### To do:
+* write a script that installs the obvious/easy dependencies
+* write a script to automatically make symlinks from `*/.*` to `~/.*`.
