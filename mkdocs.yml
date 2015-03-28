@@ -1,8 +1,10 @@
 site_name: Cloaked-Wight
+repo_url: https://github.com/stevenpollack/cloaked-wight
+docs_dir: "./"
 pages:
-- [index.md, Home]
-- [readme.md, About]
-- [R.md, R]
-- [vim.md, vim]
-- [zsh.md, zsh]
+- ["index.md", "Home"]
+- ["README.md", "Repo readme"]
+- ["vim/vimr-plugin.md", "vim", "vimr-plugin"]
+- ["vim/vundle.md", "vim", "vundle"]
+- ['tmux/tmux-yank.md', 'tmux', 'tmux-yank']
 theme: readthedocs
