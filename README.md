@@ -2,6 +2,8 @@
 Repo for my various profile and config files
 ******
 
+[![Documentation Status](https://readthedocs.org/projects/cloaked-wight/badge/?version=latest)](https://readthedocs.org/projects/cloaked-wight/?badge=latest)
+    
 Dependencies:
 
 * [tmux (>=
