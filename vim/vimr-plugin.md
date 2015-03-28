@@ -1,8 +1,9 @@
-### [vimr-plugin]()
+[vimr-plugin](http://www.lepem.ufc.br/jaa/r-plugin.html)
+======================
 
 The actual plug-in installation is handled via [vundle](vundle.md). However, 
 you'll still need to make sure your version of `vim` has `+clientserver` enabled
-and that you have the necessary packages (see [Rprofile](../R/Rprofile.md)).
+and that you have the necessary packages (see [R/Rprofile](../R/Rprofile.md)).
 
 #### vim +clientserver
 To see if you have `+clientserver`, check out the output to:
@@ -12,11 +13,14 @@ vim +version
 If your version of vim does not have it, you'll probably want `gvim`.
 On Ubuntu 12.04 there are multiple options
 ```
-sudo apt-cache search gvim
+$ sudo apt-cache search gvim
+# vim-gnome - Vi IMproved - enhanced vi editor - with GNOME2 GUI
+# vim-athena - Vi IMproved - enhanced vi editor - with Athena GUI
+# vim-gtk - Vi IMproved - enhanced vi editor - with GTK2 GUI
 ```
 However, I usually just go with:
 ```
-sudo apt get install ...
+sudo apt get install vim-gnome
 ```
  
 #### "extending" vimr-plugin
