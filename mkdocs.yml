@@ -1,0 +1,8 @@
+site_name: Cloaked-Wight
+pages:
+- [index.md, Home]
+- [readme.md, About]
+- [R.md, R]
+- [vim.md, vim]
+- [zsh.md, zsh]
+theme: readthedocs
