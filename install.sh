@@ -26,20 +26,8 @@ else
   echo "gvim is installed."
 fi
 
-# check for tmux v1.9a
-echo "checking... tmux"
-if [ $(tmux -V | grep -c "1.9") -eq 1 ]; then
-  echo "tmux (>= 1.9) is installed."
-else
-  echo "tmux is either uninstalled or the wrong version." \ 
-  "Will install v1.9a now..."
-  sudo apt-get update
-  sudo apt-get install -y python-software-properties software-properties-common
-  sudo add-apt-repository -y ppa:pi-rho/dev
-  sudo apt-get update
-  sudo apt-get install -y tmux=1.9a-1~ppa1~t
-fi
-
+# install tmux and tpm plugins
+sudo tmux/install_tmux_and_plugins.sh
 
 # update CRAN debian repo
 sudo R/update_ubuntu_R_repo.sh
