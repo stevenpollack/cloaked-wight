@@ -1,3 +1,8 @@
+### NOTE:
+This script is intended to be called from $cloaked-wight or $cloaked-wight/vim.
+Invoking from any other directory will result in an early exit.
+************
+
 This script does the following:
 
 1. Checks for `gvim` and installs `vim-gnome` if it's missing.
