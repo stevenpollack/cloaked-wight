@@ -1,3 +1,8 @@
+### NOTE:
+This script is intended to be called from $cloaked-wight or $cloaked-wight/tmux.
+Invoking from any other directory will result in an early exit.
+************ 
+
 Since `tmux-yank` requires `tmux` (>= 1.9), TPM, and `xclip` (see
 [tmux/tmux-yank](tmux-yank.md)) this script
 
