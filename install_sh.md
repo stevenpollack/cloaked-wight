@@ -10,10 +10,7 @@ It does the following:
    on certain `vim` capabilities that are necessarily installed with `gvim`. If
    it cannot find `gvim`, then `sudo apt-get install -y vim-gnome` is used to install
    it.
-4. Checks for `tmux` version 1.9. If `tmux` doesn't exist, or is of a different
-   version, [these directions](http://stackoverflow.com/questions/25940944/ugrade-tmux-from-1-8-to-1-9-on-ubuntu-14-04))
-   are followed and the `pi-rho/dev` PPA is added
-   via `sudo add-apt-repository -y ppa:pi-rho/dev` wherefrom `tmux` 1.9a is
-   installed.
+4. Calls
+   [tmux/install_tmux_and_plugins.sh](tmux/install_tmux_and_plugins_sh.md).
 5. Calls [R/update_ubuntu_R_repo.sh](R/update_ubuntu_R_repo.md) to 
    update the `R` CRAN deb repo and install the newest version of `r-base`.
