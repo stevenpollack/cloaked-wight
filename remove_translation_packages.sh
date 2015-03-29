@@ -19,8 +19,7 @@ if [ -e $TRANS_FILE ]; then
 else 
   # trans_file does not exist
   echo $ACQUIRE_STR > tmpTrans
-  sudo cp tmpTrans $TRANS_FILE
-  rm tmpTrans
+  sudo mv tmpTrans $TRANS_FILE
 fi
 
 # empty Translation packages from /var/lib/apt/lists/ directory and repopulate
