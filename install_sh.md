@@ -6,10 +6,7 @@ It does the following:
 1. Removes any translational packages from `apt` (speeding up `apt-get *`
    commands).
 2. Checks for `zsh` and `sudo apt-get install -y zsh` if it cannot find it.
-3. Checks for `gvim` (since this `.vimrc` installs `vimr-plugin` which depends
-   on certain `vim` capabilities that are necessarily installed with `gvim`. If
-   it cannot find `gvim`, then `sudo apt-get install -y vim-gnome` is used to install
-   it.
+3. Calls [vim/install_gvim_and_plugins](vim/install_gvim_and_plugins_sh.md).
 4. Calls
    [tmux/install_tmux_and_plugins.sh](tmux/install_tmux_and_plugins_sh.md).
 5. Calls [R/update_ubuntu_R_repo.sh](R/update_ubuntu_R_repo.md) to 

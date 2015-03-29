@@ -17,14 +17,8 @@ else
   echo "zsh is installed."
 fi
 
-# check for gvim and install
-echo "checking... gvim"
-if [ $(which gvim | grep -c "not found") -eq 1 ]; then
-  echo "gvim is missing. Will sudo apt-get install now..."
-  sudo apt-get install -y vim-gnome
-else
-  echo "gvim is installed."
-fi
+# install gvim and vundle plugins
+sudo vim/install_gvim_and_plugins.sh
 
 # install tmux and tpm plugins
 sudo tmux/install_tmux_and_plugins.sh

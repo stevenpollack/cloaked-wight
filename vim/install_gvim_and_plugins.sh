@@ -1,3 +1,10 @@
+#!/bin/bash
+
+##################
+# NOTE:
+# * THIS SCRIPT MUST BE CALLED FROM top-level of repo, OR vim/ sub-dir
+################## 
+
 # check for gvim and install
 echo "checking... gvim"
 if [ $(which gvim | grep -c "not found") -eq 1 ]; then
