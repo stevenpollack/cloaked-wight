@@ -1,5 +1,10 @@
 #!/bin/bash
 
+##################
+# NOTE:
+# * THIS SCRIPT MUST BE CALLED FROM top-level of repo, OR tmux/ sub-dir
+##################
+
 # check for tmux v1.9a
 echo "checking... tmux"
 if [ $(tmux -V | grep -c "1.9") -eq 1 ]; then
@@ -29,6 +34,22 @@ if [ $(which xclip | grep -c "not found") -eq 1 ]; then
 else
   echo "xclip is installed."
 fi
+
+echo "creating .tmux.conf symlink..."
+# this script is either being called from $cloaked-wight or
+# $cloaked-wight/tmux
+TMUXCONF=$(pwd)/tmux/.tmux.conf
+if [ ! -f $TMUXCONF ]; then # we're being called from $cloaked-wight/vim
+  TMUXCONF=$(pwd)/.tmux.conf
+fi
+
+if [! -f $TMUXCONF ]; then # this is being called from someplace else!
+  echo "must call script from repo top-level or tmux/ sub-dir"
+  exit
+fi
+
+sudo ln -s VIMRC ~/.vimrc
+
 
 # from
 # https://github.com/tmux-plugins/tpm/wiki/Installing-plugins-via-the-command-line-only
