@@ -10,14 +10,14 @@ already exist).
 Instead of following the second step, I decided to be a bit more
 surgical and remove only the sources in the `lists/` directory
 which match the REGEX `*_Translation*`:
-```Bash
+```sh
 find /var/lib/apt/lists -type f -name "*_Translation*" | \
   sudo xargs rm
 ```
 
 Finally, due to permission issues with the `/etc/` directory,
 I found that the following will fail:
-```Bash
+```sh
 sudo echo "# comment" >> /etc/apt/apt.conf.d/99translations
 ```
 
