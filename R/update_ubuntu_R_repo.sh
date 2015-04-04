@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "update_ubuntu_R_repo.sh: starting..."
+
 # append U-Muenster CRAN mirror to DEBIAN repo list
 echo "Adding U-Muenster CRAN mirror to debian repo list..."
 
@@ -18,7 +20,7 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 > /dev/nu
 
 echo "Updating apt-get and (re)install r-base..."
 sudo apt-get update > /dev/null
-sudo apt-get install -y r-base-core > /dev/null
+sudo apt-get install -y r-base > /dev/null
 
 # print version number and location
 R_VERSION=$(Rscript -e "cat(R.version.string, fill = TRUE)")
