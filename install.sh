@@ -9,13 +9,7 @@
 sudo remove_translation_packages.sh
 
 # check for zsh and install
-echo "checking... zsh"
-if [ $(which zsh | grep -c "not found") -eq 1 ]; then
-  echo "zsh is missing. Will sudo apt-get install now..."
-  sudo apt-get install -y zsh
-else
-  echo "zsh is installed."
-fi
+sudo zsh/install_git_and_zsh.sh
 
 # install gvim and vundle plugins
 sudo vim/install_gvim_and_plugins.sh
