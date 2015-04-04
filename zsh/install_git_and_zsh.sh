@@ -43,6 +43,8 @@ if [ ! -f $ZSHRC ]; then # this is being called from someplace else!
   exit
 fi
 
-sudo ln -fs ZSHRC ~/.zshrc
+sudo ln -fs $ZSHRC ~/.zshrc
+
+echo "Linked ~/.zshrc ->" $ZSHRC ...
 
 echo "install_git_and_zsh.sh: done..."
