@@ -7,8 +7,8 @@
 # 4. update repo for R and install latest version
 
 sudo sh remove_translation_packages.sh 
-#sudo sh zsh/install_git_and_zsh.sh
+sudo sh zsh/install_git_and_zsh.sh
 sudo sh vim/install_gvim_and_plugins.sh
-#sudo sh tmux/install_tmux_and_plugins.sh
-#sudo sh R/update_ubuntu_R_repo.sh
+sudo sh tmux/install_tmux_and_plugins.sh
+sudo sh R/update_ubuntu_R_repo.sh
 
