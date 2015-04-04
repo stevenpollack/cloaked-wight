@@ -5,6 +5,8 @@
 # * THIS SCRIPT MUST BE CALLED FROM top-level of repo, OR vim/ sub-dir
 ################## 
 
+echo "install_gvim_and_plugins: starting..."
+
 # check for gvim and install
 echo "Checking for gvim..."
 gvim --version 2>&1 > /dev/null # suppress output

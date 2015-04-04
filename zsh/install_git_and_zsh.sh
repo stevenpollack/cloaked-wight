@@ -1,5 +1,6 @@
 #!/bin/sh
 
+echo "install_git_and_zsh.sh: starting..."
 echo "Checking for git..."
 git --version 2>&1 >/dev/null # suppress output
 GIT_IS_AVAILABLE=$?
@@ -24,7 +25,7 @@ echo "Checking for oh-my-zsh..."
 OH_MY_ZSH_DIR="~/.oh-my-zsh"
 if [ ! -d $OH_MY_ZSH_DIR ]; then
   echo $OH_MY_ZSH_DIR "is not present... Will install via wget..."
-  wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
+  sudo wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
 fi
 
 # copy over .zshrc
@@ -46,5 +47,9 @@ fi
 sudo ln -fs $ZSHRC ~/.zshrc
 
 echo "Linked ~/.zshrc ->" $ZSHRC ...
+
+# change shell to zsh
+sudo chsh -s $(which zsh) $(whoami)
+echo "Changed default shell to zsh..."
 
 echo "install_git_and_zsh.sh: done..."

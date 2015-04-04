@@ -5,6 +5,8 @@
 # * THIS SCRIPT MUST BE CALLED FROM top-level of repo, OR tmux/ sub-dir
 ##################
 
+echo "install_tmux_and_plugins.sh: starting..."
+
 echo "Checking for tmux..."
 tmux -V 2>&1 > /dev/null # suppress output
 TMUX_IS_AVAILABLE=$?
