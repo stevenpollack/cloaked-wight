@@ -64,24 +64,18 @@ Vagrant.configure(2) do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  config.vm.provision "remove_translation_packages", privileged: false, type: "shell" do |s|
-    s.inline = "cd /vagrant; make remove-translation-packages"
+  
+  # silently install git -- it can be assumed that a user has git installed
+  # before interacting with cloaked-wight
+  config.vm.provision "install-git",
+    type: "shell",
+    inline: "sudo apt-get install -y git > /dev/null"
+
+  # config.vm.provision "check-tmux", type: "shell", inline: "echo `tmux -V`"
+
+  # provisioning should follow the installation order in makefile, but first
+  # we need to change directories to /vagrant (where cloaked-wight is located).
+  config.vm.provision "install.sh", privileged: false, type: "shell" do |s|
+    s.inline = "cd /vagrant; sudo sh ./install.sh"
   end
-
-  config.vm.provision "install_git_and_zsh", privileged: false, type: "shell" do |s|
-    s.inline = "cd /vagrant; make git-and-zsh"
-  end
-
-  #config.vm.provision "install_R", type: "shell" do |s|
-  #  s.path = "R/update_ubuntu_R_repo.sh"
-  #end
-
-  #config.vm.provision "install_tmux", type: "shell" do |s|
-  #  s.path = "tmux/install_tmux_and_plugins.sh"
-  #end
-
-    #inline: <<-SHELL
-    # sudo apt-get update
-    # sudo apt-get install -y apache2
-   #SHELL
 end
