@@ -64,13 +64,21 @@ Vagrant.configure(2) do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  config.vm.provision "remove_translation_packages", type: "shell" do |s|
-    s.path = "remove_translation_packages.sh"
+  config.vm.provision "remove_translation_packages", privileged: false, type: "shell" do |s|
+    s.inline = "cd /vagrant; make remove-translation-packages"
   end
 
-  config.vm.provision "install_R", type: "shell" do |s|
-    s.path = "remove_translation_packages.sh"
+  config.vm.provision "install_git_and_zsh", privileged: false, type: "shell" do |s|
+    s.inline = "cd /vagrant; make git-and-zsh"
   end
+
+  #config.vm.provision "install_R", type: "shell" do |s|
+  #  s.path = "R/update_ubuntu_R_repo.sh"
+  #end
+
+  #config.vm.provision "install_tmux", type: "shell" do |s|
+  #  s.path = "tmux/install_tmux_and_plugins.sh"
+  #end
 
     #inline: <<-SHELL
     # sudo apt-get update
