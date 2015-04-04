@@ -6,12 +6,14 @@
 ################## 
 
 # check for gvim and install
-echo "checking... gvim"
-if [ $(which gvim | grep -c "not found") -eq 1 ]; then
-  echo "gvim is missing. Will sudo apt-get install now..."
-  sudo apt-get install -y vim-gnome
+echo "Checking for gvim..."
+gvim --version 2>&1 > /dev/null # suppress output
+GVIM_IS_AVAILABLE=$?
+if [ ! $GVIM_IS_AVAILABLE -eq 0 ]; then
+  echo "gvim is not installed... Will get with sudo apt-get..."
+  sudo apt-get install -y vim-gnome > /dev/null
 else
-  echo "gvim is installed."
+  echo $(gvim --version) "is installed..." 
 fi
 
 # install vundle
@@ -32,14 +34,18 @@ if [ ! -f $VIMRC ]; then # we're being called from $cloaked-wight/vim
   VIMRC=$(pwd)/.vimrc
 fi
 
-if [! -f $VIMRC ]; then # this is being called from someplace else!
+if [ ! -f $VIMRC ]; then # this is being called from someplace else!
   echo "must call script from repo top-level or vim/ sub-dir"
   exit
 fi
 
-sudo ln -s VIMRC ~/.vimrc
+sudo ln -fs $VIMRC ~/.vimrc
+
+echo "Linked ~/.vimrc ->" $VIMRC ...
 
 # run the plugin installs
 # see: http://stackoverflow.com/questions/12834370/run-vim-command-from-commandline
-vim +PluginInstall +qall now
+echo Installing vim plugin-ins...
+vim +PluginInstall +qall now > /dev/null
 
+echo "install_gvim_and_plugins: done..."
