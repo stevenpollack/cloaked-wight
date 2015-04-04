@@ -7,19 +7,8 @@ test-scripts:
 	vagrant up --provision
 	vagrant destroy -f
 
-# remove translational packages
-.PHONY: remove-translation-packages
-
-remove-translation-packages:
-	sudo sh ./remove_translation_packages.sh
-
-# install just git and (oh my) zsh
-.PHONY: git-and-zsh
-
-git-and-zsh:
-	sudo sh ./zsh/install_git_and_zsh.sh
-
 # make symlinks in batches
+# TODO: figure out how to properly build these with dependencies
 .PHONY: create-symlinks
 
 CURRENT_DIR=`pwd`
