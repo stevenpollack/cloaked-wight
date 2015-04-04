@@ -14,6 +14,13 @@ Repo for my various profile and config files
 gconftool --set --type=string /apps/gnome-terminal/profiles/Default/encoding en_US.UTF-8
 ```
 
-### To do:
-* write a script that installs the obvious/easy dependencies
-* write a script to automatically make symlinks from `*/.*` to `~/.*`.
+### Testing:
+* Install scripts are tested using
+  [vagrant](http://www.vagrantup.com/downloads) and
+  [virtualbox](https://www.virtualbox.org/wiki/Downloads) -- you may need to
+  make sure that hardware acceleration is enabled in your system's BIOS if you
+  find that you cannot virtualize 64-bit Ubuntu...
+* The repo vagrant file, `Vagrantfile`, has all the provisions set up so that
+  you, too, can verify that the tests exist, simply invoke `vangrant up` at 
+  the top-level of the repo.
+
