@@ -28,8 +28,11 @@ echo "Removing all packages in" \
   $TRANSLATION_PACKAGE_DIR \
   "which grep with '*_Translation*'..."
 
-find $TRANSLATION_PACKAGE_DIR -type f -name "*_Translation*" | \
-  sudo xargs rm
+# find and remove all files that grep *_Translation
+sudo find $TRANSLATION_PACKAGE_DIR -type f -name "*_Translation*" -exec rm -r {} \;
+echo "Clean successful. Updating apt..."
 
-sudo apt-get update
+# update silently
+sudo apt-get update > /dev/null
 
+echo "remove_translation_packages.sh: done..."
