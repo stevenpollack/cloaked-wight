@@ -18,7 +18,7 @@ else
   sudo apt-get update
   sudo apt-get install -y tmux=1.9a-1~ppa1~t
   if [ $(tmux -V | grep -c "1.9") -eq 0 ]; then
-    echo "tmux 1.9a failed to install."
+    echo "tmux 1.9a failed to install..."
     exit
   fi
 fi
@@ -32,7 +32,7 @@ if [ $(which xclip | grep -c "not found") -eq 1 ]; then
   echo "xclip is missing. Will sudo apt-get install now..."
   sudo apt-get install -y xclip
 else
-  echo "xclip is installed."
+  echo "xclip is installed..."
 fi
 
 echo "creating .tmux.conf symlink..."
