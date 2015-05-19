@@ -2,26 +2,21 @@
 options(repos = c(CRAN = "http://cran.rstudio.com"))
 
 if(interactive()){
-  # set installation to occur only when loading into an interactive session
-  if (!require(devtools)) {
-    utils::install.packages("devtools")
-  }
+  
+  # vim-r-plugin packages:
+  require(colorout)
+  require(setwidth)
+  options(vimcom.verbose = 1) # optional
+  require(vimcom)
 
-  if (!require(vimcom)) {
-    devtools::install_github("stevenpollack/vimcom")
-    options(vimcom.verbose = 1)
-  }
-
-  if (!require(colorout)) {
-    devtools::install_github("stevenpollack/colorout")
-  }
-
-  if (!require(setwidth)) {
-    utils::install.packages("setwidth")
-  }
+  # workhorse packages:
+  require(devtools)
+  require(data.table)
+  require(stringr)
 
   # default errors to recover mode
   options(error = utils::recover)
+
   # remember to set printout length and devtools shit
   options(max.print = 200L)
 }
