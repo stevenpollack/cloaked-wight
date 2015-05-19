@@ -48,8 +48,9 @@ ZSH_THEME="steeef"
 plugins=(git)
 
 # User configuration
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
+export PATH="/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$JAVA_HOME/bin"
 
-export PATH="/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
