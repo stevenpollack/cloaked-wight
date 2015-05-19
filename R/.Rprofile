@@ -1,11 +1,12 @@
 # default repo to rstudio AWS CRAN mirror:
 options(repos = c(CRAN = "http://cran.rstudio.com"))
 
-if (!require(devtools)) {
-  utils::install.packages("devtools")
-}
-
 if(interactive()){
+  # set installation to occur only when loading into an interactive session
+  if (!require(devtools)) {
+    utils::install.packages("devtools")
+  }
+
   if (!require(vimcom)) {
     devtools::install_github("stevenpollack/vimcom")
     options(vimcom.verbose = 1)
