@@ -25,11 +25,13 @@ Plugin 'sickill/vim-monokai'
 " markdown syntax highlighting
 Plugin 'tpope/vim-markdown'
 
+" Get latest versions of Vim-R plugin and runtime files
 " vim R-plugin
-Plugin 'vim-scripts/Vim-R-plugin'
+Plugin 'jcfaria/Vim-R-plugin'
+Plugin 'jalvesaq/R-Vim-runtime'
 
 " suggested color scheme: http://www.vim.org/scripts/script.php?script_id=3292
-Plugin 'stevenpollack/vim-southernlights'
+Plugin 'jalvesaq/southernlights'
 
 " powerline plugin
 Plugin 'bling/vim-airline'
