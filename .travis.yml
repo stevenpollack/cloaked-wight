@@ -1,0 +1,4 @@
+sudo: required
+language: c
+install: sudo sh ./install.sh
+script: Rscript -e 'cat(0)'
