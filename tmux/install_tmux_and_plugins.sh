@@ -68,8 +68,10 @@ xclip -version 2>&1 >/dev/null # suppress output
 XCLIP_IS_AVAILABLE=$?
 if [ ! $XCLIP_IS_AVAILABLE -eq 0 ]; then
   echo "xclip is not installed... Will get with sudo apt-get..."
-  sudo apt-get install -y xclip > /dev/null || \
-  { echo "xclip failed to install..."; exit 1 } 
+  sudo apt-get install -y xclip > /dev/null || {
+  echo "xclip failed to install...";
+  exit 1;
+  } 
 else
   echo $(xclip -version) is installed to $(which xclip)
 fi
@@ -88,11 +90,16 @@ fi
 
 if [ ! -f $TMUXCONF ]; then # this is being called from someplace else!
   echo "must call script from repo top-level or tmux/ sub-dir"
-  exit
+  exit 1
 fi
 
 sudo ln -fs $TMUXCONF ~/.tmux.conf
+if [ $? -eq 0 ]; then
 echo Linked ~/.tmux.conf "->" $TMUXCONF ...
+else
+  echo "Failed to create symlink between ~/.tmux.conf and" $TMUXCONF
+  exit 1
+fi
 
 # from
 # https://github.com/tmux-plugins/tpm/wiki/Installing-plugins-via-the-command-line-only
@@ -107,3 +114,4 @@ tmux new-session -d
 tmux kill-server
 
 echo "install_tmux_and_plugins.sh: done..."
+exit
