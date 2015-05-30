@@ -2,6 +2,7 @@
 Repo for my various profile and config files
 ******
 
+[![Build Status](https://travis-ci.org/stevenpollack/cloaked-wight.svg?branch=master)](https://travis-ci.org/stevenpollack/cloaked-wight)
 [![Documentation Status](https://readthedocs.org/projects/cloaked-wight/badge/?version=latest)](https://readthedocs.org/projects/cloaked-wight/?badge=latest)
   
 ### Notes:  
