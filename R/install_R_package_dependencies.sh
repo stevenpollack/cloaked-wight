@@ -1,7 +1,14 @@
 echo "Installing headers for 'XML', 'git2r' and 'RCurl'..."
-sudo apt-get install -y libxml2-dev > /dev/null
-sudo apt-get install -y libgit2-dev > /dev/null
-sudo apt-get install -y libcurl4-openssl-dev > /dev/null
+sudo apt-get install -y libxml2-dev > /dev/null || \
+  { echo "libxm2-dev failed to install..."; exit 1 }
+
+sudo apt-get install -y libgit2-dev > /dev/null || \
+  { echo "libgit2-dev failed to install..."; exit 1 }
+
+
+sudo apt-get install -y libcurl4-openssl-dev > /dev/null || \
+  { echo "libcurl4-openssl-dev failed to install..."; exit 1 }
+
 
 echo "Installing headers for 'RMySQL' and 'RPostgres'..."
 sudo apt-get install -y libpq-dev > /dev/null
@@ -40,7 +47,7 @@ fi
 
 if [ ! -f $RPROFILE ]; then # this is being called from someplace else!
   echo "must call script from repo top-level or R/ sub-dir"
-  exit
+  exit 1
 fi
 
 sudo ln -fs $RPROFILE ~/.Rprofile
