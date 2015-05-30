@@ -21,14 +21,14 @@ fi
 # check for tmux v1.9a
 echo "Checking tmux version..."
 if [ $(tmux -V | grep -c "1.9") -eq 1 ]; then
-  echo "tmux (>= 2.0) is installed."
+  echo "tmux (>= 1.9) is installed."
 else
   echo "Will install v2.0-1 now..."
   # sudo apt-get update
   sudo apt-get install -y python-software-properties software-properties-common > /dev/null
   sudo add-apt-repository -y ppa:pi-rho/dev > /dev/null
   sudo apt-get update > /dev/null
-  sudo apt-get install -y tmux=2.0-1~ppa1~t > /dev/null
+  sudo apt-get install -y tmux > /dev/null
   if [ $(tmux -V | grep -c "2\\.0") -eq 0 ]; then
     echo "tmux 2.0-1 failed to install..."
     exit 1
