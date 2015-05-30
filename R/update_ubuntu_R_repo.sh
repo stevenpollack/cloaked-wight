@@ -9,7 +9,7 @@ echo "Adding U-Muenster CRAN mirror to debian repo list..."
 UBUNTU_VERSION=$(lsb_release -c | sed -e 's/Codename:\s*//g')
 
 DEB_SOURCE="/etc/apt/sources.list"
-CRAN_DEB=$(echo "deb http://cran.uni-muenster.de/bin/linux/ubuntu" $UBUNTU_VERSION/)
+CRAN_DEB=$(echo "deb http://cran.uni-muenster.de/bin/linux/ubuntu" $UBUNTU_VERSION"/")
 
 cp $DEB_SOURCE tmpDebSource
 echo "# Add CRAN" >> tmpDebSource
@@ -23,8 +23,7 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 > /dev/nu
 
 echo "Updating apt-get and (re)install r-base..."
 sudo apt-get update > /dev/null
-sudo apt-get install -y r-base > /dev/null || \
-  { echo "r-base failed to install..."; exit 1 }
+sudo apt-get install -y r-base > /dev/null || { echo "r-base failed to install..."; exit 1 }
 
 
 # print version number and location
