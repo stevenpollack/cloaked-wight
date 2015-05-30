@@ -14,7 +14,7 @@ function install_tmux {
   sudo add-apt-repository -y ppa:pi-rho/dev > /dev/null
   sudo apt-get update > /dev/null
 
-  if [ $1 -eq "trusty" ]; then
+  if [[ "$1" = "trusty" ]]; then
     sudo apt-get install -y tmux=2.0-1~ppa1~t > /dev/null
     if [ $(tmux -V | grep -c "2\\.0") -eq 0 ]; then
       echo "tmux 2.0-1 failed to install..."
@@ -47,7 +47,7 @@ tmux -V 2>&1 > /dev/null # suppress output
 TMUX_IS_AVAILABLE=$?
 
 # get ubuntu version in the case we need to install or upgrade tmux
-UBUNTU_VERSION=$()
+UBUNTU_VERSION=$(lsb_release -c | sed -e 's/Codename:\s*//g')
 
 VERSION_IS_GOOD=check_tmux_version
 
