@@ -45,9 +45,13 @@ sudo ln -fs $VIMRC ~/.vimrc
 
 echo "Linked ~/.vimrc ->" $VIMRC ...
 
-# run the plugin installs
+# run the plugin installs:
 # see: http://stackoverflow.com/questions/12834370/run-vim-command-from-commandline
+# NOTE: we'll need to create a temporary variable to avoid
+# starting vim with a colorscheme that's yet to be installed.
 echo Installing vim plugin-ins...
+export PLUGIN_INSTALLATION=1
 vim +PluginInstall +qall now > /dev/null
+unset PLUGIN_INSTALLATION
 
 echo "install_gvim_and_plugins: done..."
