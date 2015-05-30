@@ -18,17 +18,29 @@ sudo apt-get install -y libcurl4-openssl-dev > /dev/null || {
   EXIT_CODE=1;
 }
 
+echo "Installing headers for 'RMySQL' and 'RPostgres'..."
+sudo apt-get install -y libpq-dev > /dev/null || {
+  FAILED_LIBS=$(echo $FAILED_LIBS "libpq-dev");
+  EXIT_CODE=1;
+}
+ 
+sudo apt-get install -y libmysqlclient-dev > /dev/null || {
+  FAILED_LIBS=$(echo $FAILED_LIBS "libmysqlclient-dev");
+  EXIT_CODE=1;
+}
+ 
+echo "Installing headers for 'vimcom'..."
+sudo apt-get install -y libx11-dev > /dev/null || {
+  FAILED_LIBS=$(echo $FAILED_LIBS "libx11-dev");
+  EXIT_CODE=1;
+}
+ 
+
 if [ $EXIT_CODE -eq 1 ]; then
   echo $FAILED_LIBS "failed to install..."
   exit $EXIT_CODE
 fi
 
-echo "Installing headers for 'RMySQL' and 'RPostgres'..."
-sudo apt-get install -y libpq-dev > /dev/null
-sudo apt-get install -y libmysqlclient-dev > /dev/null
-
-echo "Installing headers for 'vimcom'..."
-sudo apt-get install -y libx11-dev > /dev/null
 
 echo "Installing 'devtools', 'data.table', 'ggplot2', 'reshape2', 'string', 'Rcpp', 'DBI', 'RMySQL', 'RPostgres', 'vimcom', 'colorout', 'setwidth'..."
 INSTALL_SCRIPT='options(repos = c(CRAN = "http://cran.rstudio.com")); 
