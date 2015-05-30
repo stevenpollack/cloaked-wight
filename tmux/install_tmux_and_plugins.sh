@@ -31,7 +31,7 @@ else
   sudo apt-get install -y tmux=2.0-1~ppa1~t > /dev/null
   if [ $(tmux -V | grep -c "2\\.0") -eq 0 ]; then
     echo "tmux 2.0-1 failed to install..."
-    exit
+    exit 1
   fi
 fi
 
