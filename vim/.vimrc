@@ -63,9 +63,23 @@ set number
 " enable 256-color support
 set t_Co=256
 
-" set color scheme
-syntax enable
-colorscheme southernlights
+if has("gui_running")
+endif
+
+" if PLUGIN_INSTALLATION is defined, it's because
+" we're installing vim plugin's, and therefore
+" southernlights doesn't exist. This will cause
+" the provisioning to wait for ENTER or some other
+" command... 
+let s:plugin_installation = $PLUGIN_INSTALLATION
+
+if ! s:plugin_installation
+  " set color scheme
+  syntax enable
+  colorscheme southernlights
+endif
+
+unlet s:plugin_installation
 
 " disable '_' -> '<-' mapping in r-plugin
 let vimrplugin_underscore = 0
