@@ -8,13 +8,14 @@
 echo "install_tmux_and_plugins.sh: starting..."
 
 # helper functions:
-function install_tmux {
+install_tmux()
+{
   # add pi-rho/dev PPA for latest version of tmux
   sudo apt-get install -y python-software-properties software-properties-common > /dev/null
   sudo add-apt-repository -y ppa:pi-rho/dev > /dev/null
   sudo apt-get update > /dev/null
 
-  if [[ "$1" = "trusty" ]]; then
+  if [ "$1" = "trusty" ]; then
     sudo apt-get install -y tmux=2.0-1~ppa1~t > /dev/null
     if [ $(tmux -V | grep -c "2\\.0") -eq 0 ]; then
       echo "tmux 2.0-1 failed to install..."
@@ -30,7 +31,8 @@ function install_tmux {
   fi
 }
 
-function check_tmux_version {
+check_tmux_version()
+{
   tmux -V 2>&1 > /dev/null # suppress output
   TMUX_IS_AVAILABLE=$?
 
@@ -49,16 +51,16 @@ TMUX_IS_AVAILABLE=$?
 # get ubuntu version in the case we need to install or upgrade tmux
 UBUNTU_VERSION=$(lsb_release -c | sed -e 's/Codename:\s*//g')
 
-VERSION_IS_GOOD=check_tmux_version
+VERSION_IS_GOOD=$(check_tmux_version)
 
-if [[ ! "$VERSION_IS_GOOD" = "TRUE" ]]; then
+if [ ! "$VERSION_IS_GOOD" = "TRUE" ]; then
   echo "Installig the latest version of tmux in pi-rho PPA..."
   install_tmux $UBUNTU_VERSION
-  VERSION_IS_GOOD=check_tmux_version
+  VERSION_IS_GOOD=$(check_tmux_version)
 fi
 
 # double check that everything got installed properly
-if [[ ! $VERSION_IS_GOOD = "TRUE" ]]; then
+if [ ! "$VERSION_IS_GOOD" = "TRUE" ]; then
   echo "Latest version of tmux failed to properly install..."
   exit 1
 fi
