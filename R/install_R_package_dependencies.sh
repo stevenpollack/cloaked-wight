@@ -8,11 +8,6 @@ sudo apt-get install -y libxml2-dev > /dev/null || {
   EXIT_CODE=1;
 }
 
-#sudo apt-get install -y libgit2-dev > /dev/null || {
-#  FAILED_LIBS=$(echo $FAILED_LIBS "libgit2-dev");
-#  EXIT_CODE=1;
-#}
-
 sudo apt-get install -y libcurl4-openssl-dev > /dev/null || {
   FAILED_LIBS=$(echo $FAILED_LIBS "libcurl4-openssl-dev");
   EXIT_CODE=1;
@@ -55,7 +50,8 @@ devtools::install_github("rstats-db/RMySQL");
 devtools::install_github("rstats-db/RPostgres");
 devtools::install_github("jalvesaq/VimCom");
 devtools::install_github("jalvesaq/colorout");
-install.packages("setwidth");'
+install.packages("setwidth");
+install.packages("magrittr");'
 
 echo $INSTALL_SCRIPT >> tmp.R
 
