@@ -13,6 +13,9 @@ if(interactive()){
   require(devtools)
   require(data.table)
   require(stringr)
+  require(magrittr)
+  require(ggplot2)
+  require(reshape2)
 
   # default errors to recover mode
   options(error = utils::recover)
