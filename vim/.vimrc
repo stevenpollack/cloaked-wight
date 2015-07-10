@@ -81,9 +81,20 @@ endif
 
 unlet s:plugin_installation
 
+" have r-plugin respect custom ~/.tmux.conf
+let vimrplugin_notmuxconf = 1
+
 " disable '_' -> '<-' mapping in r-plugin
 let vimrplugin_underscore = 0
 let vimrplugin_assign = 0
+
+" start vimr R-session in vertical split
+let vimrplugin_vsplit = 1
+let vimrplugin_rconsole_width = 60
+
+" start vimr highlighting for the following
+" libraries:
+let vimrplugin_start_libs = "base,stats,graphics,grDevices,utils,methods,data.table,stringr,devtools,magrittr,ggplot2,reshape2"
 
 " have VIM open R documentation in a new tab
 let vimrplugin_vimpager = "tabnew"
