@@ -36,6 +36,23 @@ if [ $EXIT_CODE -eq 1 ]; then
   exit $EXIT_CODE
 fi
 
+echo "creating .Rprofile symlink..."
+# this script is either being called from $cloaked-wight or
+# $cloaked-wight/R
+RPROFILE=$(pwd)/R/.Rprofile
+if [ ! -f $RPROFILE ]; then # we're being called from $cloaked-wight/vim
+  RPROFILE=$(pwd)/.Rprofile
+fi
+
+if [ ! -f $RPROFILE ]; then # this is being called from someplace else!
+  echo "must call script from repo top-level or R/ sub-dir"
+  exit 1
+fi
+
+sudo ln -fs $RPROFILE ~/.Rprofile
+echo Linked ~/.Rprofile "->" $RPROFILE ...
+mkdir ~/.Rpkgs # this is the new local library-site
+
 
 echo "Installing 'devtools', 'data.table', 'ggplot2', 'reshape2', 'string', 'Rcpp', 'DBI', 'RMySQL', 'RPostgres', 'vimcom', 'colorout', 'setwidth'..."
 INSTALL_SCRIPT='options(repos = c(CRAN = "http://cran.rstudio.com")); 
@@ -65,22 +82,6 @@ rm tmp.R
 if [ $EXIT_CODE -eq 1 ]; then
   exit $EXIT_CODE
 fi
-
-echo "creating .Rprofile symlink..."
-# this script is either being called from $cloaked-wight or
-# $cloaked-wight/R
-RPROFILE=$(pwd)/R/.Rprofile
-if [ ! -f $RPROFILE ]; then # we're being called from $cloaked-wight/vim
-  RPROFILE=$(pwd)/.Rprofile
-fi
-
-if [ ! -f $RPROFILE ]; then # this is being called from someplace else!
-  echo "must call script from repo top-level or R/ sub-dir"
-  exit 1
-fi
-
-sudo ln -fs $RPROFILE ~/.Rprofile
-echo Linked ~/.Rprofile "->" $RPROFILE ...
 
 echo "install_R_package_dependencies.sh: done..."
 exit $EXIT_CODE

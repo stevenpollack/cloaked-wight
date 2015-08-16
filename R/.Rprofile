@@ -1,6 +1,9 @@
 # default repo to rstudio AWS CRAN mirror:
 options(repos = c(CRAN = "http://cran.rstudio.com"))
 
+# set default library location to ~/.Rpkgs
+.libPaths("~/.Rpkgs")
+
 if(interactive()){
   
   # vim-r-plugin packages:
