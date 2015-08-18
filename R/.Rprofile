@@ -21,8 +21,8 @@ if(interactive()){
   require(reshape2)
 
   # default errors to recover mode
-  options(error = utils::recover)
+  # options(error = utils::recover)
 
-  # remember to set printout length and devtools shit
+  # remember to set printout length
   options(max.print = 200L)
 }
