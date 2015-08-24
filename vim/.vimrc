@@ -19,6 +19,13 @@ Plugin 'L9'
 " Git plugin not hosted on GitHub
 Plugin 'git://git.wincent.com/command-t.git'
 
+" slimux plugin to make a python copy of vim-r
+Plugin 'epeli/slimux'
+" supertab for tab-completion
+Plugin 'ervandew/supertab'
+" vim-jedi for python-related stuff
+Plugin 'davidhalter/jedi-vim'
+
 " monokai color scheme
 Plugin 'sickill/vim-monokai'
 
@@ -137,3 +144,8 @@ endfunction
 " call RenderRMarkdown silently to suppress the "Press ENTER to continue" prompt
 nnoremap <F2> :silent :call RenderRMarkdown() <CR>
 
+" suggested slimux bindings
+map <Leader>s :SlimuxREPLSendLine<CR>
+vmap <Leader>s :SlimuxREPLSendSelection<CR>
+map <Leader>a :SlimuxShellLast<CR>
+map <Leader>k :SlimuxSendKeysLast<CR>
