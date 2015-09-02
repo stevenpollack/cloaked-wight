@@ -15,6 +15,11 @@ Plugin 'gmarik/Vundle.vim'
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive' " access git through vim command-line
 
+" slimux plugin to make a python copy of vim-r
+Plugin 'epeli/slimux'
+" vim-jedi for python-related stuff
+Plugin 'davidhalter/jedi-vim'
+
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9' " this is a utility package, likely required by other plugins
 
@@ -141,6 +146,12 @@ endfunction
 
 " call RenderRMarkdown silently to suppress the "Press ENTER to continue" prompt
 nnoremap <F2> :silent :call RenderRMarkdown() <CR>
+
+" suggested slimux bindings
+map <Leader>s :SlimuxREPLSendLine<CR>
+vmap <Leader>s :SlimuxREPLSendSelection<CR>
+map <Leader>a :SlimuxShellLast<CR>
+map <Leader>k :SlimuxSendKeysLast<CR>
 
 " command-t modifications:
 " make <CR> (enter) open files in a new tab (as opposed to buffer)
