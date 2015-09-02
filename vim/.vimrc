@@ -18,8 +18,8 @@ Plugin 'tpope/vim-fugitive' " access git through vim command-line
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9' " this is a utility package, likely required by other plugins
 
-" Git plugin not hosted on GitHub
-Plugin 'wincent/command-t' " brow files intelligently, needs ruby-dev 
+" browse files intelligently, needs ruby-dev
+Plugin 'wincent/command-t'  
 
 " Get latest versions of Vim-R plugin and runtime files
 " vim R-plugin
