@@ -7,6 +7,9 @@
 
 echo "install_gvim_and_plugins: starting..."
 
+echo "installing ruby[-dev] for use with gvim..."
+sudo apt-get install -y ruby-dev > /dev/null
+
 # check for gvim and install
 echo "Checking for gvim..."
 gvim --version 2>&1 > /dev/null # suppress output
@@ -53,5 +56,13 @@ echo Installing vim plugin-ins...
 export PLUGIN_INSTALLATION=1
 vim +PluginInstall +qall now > /dev/null
 unset PLUGIN_INSTALLATION
+
+# compile command-t -- this may require ruby-dev
+echo "compiling command-t..."
+CURRENT_DIR=$(pwd)
+cd ~/.vim/bundle/command-t/ruby/command-t
+ruby extconf.rb
+make
+cd $CURRENT_DIR
 
 echo "install_gvim_and_plugins: done..."

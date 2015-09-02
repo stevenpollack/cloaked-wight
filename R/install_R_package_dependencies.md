@@ -10,7 +10,7 @@ are to be installed, the following libraries/headers are needed:
 
 Once these are installed the mentioned packages as well as
 
-* "Rcpp", "stringr", "DBI", "colorout", "data.table", "reshape2", "ggplot2" and "setwidth"
+* "Rcpp", "stringr", "DBI", "colorout", "data.table", "reshape2", "ggplot2", "setwidth", and "pipeR"
 
 are installed.
 

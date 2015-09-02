@@ -2,22 +2,18 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
+" Keep Plugin commands between vundle#begin/end.
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
 " The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
-" Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'tpope/vim-fugitive' " access git through vim command-line
 
 " slimux plugin to make a python copy of vim-r
 Plugin 'epeli/slimux'
@@ -28,20 +24,31 @@ Plugin 'davidhalter/jedi-vim'
 
 " monokai color scheme
 Plugin 'sickill/vim-monokai'
+" plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'L9' " this is a utility package, likely required by other plugins
 
-" markdown syntax highlighting
-Plugin 'tpope/vim-markdown'
+" browse files intelligently, needs ruby-dev
+Plugin 'wincent/command-t'  
 
 " Get latest versions of Vim-R plugin and runtime files
 " vim R-plugin
 Plugin 'jcfaria/Vim-R-plugin'
 Plugin 'jalvesaq/R-Vim-runtime'
-
-" suggested color scheme: http://www.vim.org/scripts/script.php?script_id=3292
-Plugin 'jalvesaq/southernlights'
-
 " powerline plugin
 Plugin 'bling/vim-airline'
+
+" tab completion
+Plugin 'ervandew/supertab'
+
+" color schemes:
+" monokai
+Plugin 'sickill/vim-monokai'
+" vim-r-plugin
+Plugin 'jalvesaq/southernlights'
+
+" syntax highlighting
+" markdown
+Plugin 'tpope/vim-markdown' 
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -97,11 +104,11 @@ let vimrplugin_assign = 0
 
 " start vimr R-session in vertical split
 let vimrplugin_vsplit = 1
-let vimrplugin_rconsole_width = 60
+let vimrplugin_rconsole_width = 100
 
 " start vimr highlighting for the following
 " libraries:
-let vimrplugin_start_libs = "base,stats,graphics,grDevices,utils,methods,data.table,stringr,devtools,magrittr,ggplot2,reshape2"
+let vimrplugin_start_libs = "base,stats,graphics,grDevices,utils,methods,data.table,stringr,devtools,magrittr,pipeR,ggplot2,reshape2"
 
 " have VIM open R documentation in a new tab
 let vimrplugin_vimpager = "tabnew"
@@ -149,3 +156,8 @@ map <Leader>s :SlimuxREPLSendLine<CR>
 vmap <Leader>s :SlimuxREPLSendSelection<CR>
 map <Leader>a :SlimuxShellLast<CR>
 map <Leader>k :SlimuxSendKeysLast<CR>
+
+" command-t modifications:
+" make <CR> (enter) open files in a new tab (as opposed to buffer)
+let g:CommandTAcceptSelectionMap = '<C-t>'
+let g:CommandTAcceptSelectionTabMap = '<CR>'

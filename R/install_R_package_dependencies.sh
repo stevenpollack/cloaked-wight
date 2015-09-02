@@ -56,19 +56,19 @@ mkdir ~/.Rpkgs # this is the new local library-site
 
 echo "Installing 'devtools', 'data.table', 'ggplot2', 'reshape2', 'string', 'Rcpp', 'DBI', 'RMySQL', 'RPostgres', 'vimcom', 'colorout', 'setwidth'..."
 INSTALL_SCRIPT='options(repos = c(CRAN = "http://cran.rstudio.com")); 
-install.packages("devtools"); 
-install.packages("stringr"); 
-devtools::install_github("RcppCore/Rcpp"); 
-install.packages("data.table"); 
-install.packages("ggplot2"); 
-install.packages("reshape2"); 
-devtools::install_github("rstats-db/DBI"); 
-devtools::install_github("rstats-db/RMySQL"); 
-devtools::install_github("rstats-db/RPostgres");
-devtools::install_github("jalvesaq/VimCom");
-devtools::install_github("jalvesaq/colorout");
-install.packages("setwidth");
-install.packages("magrittr");'
+install.packages("stringr", quiet = TRUE); 
+install.packages("devtools", quiet = TRUE); 
+install.packages("reshape2", quiet = TRUE);
+install.packages("data.table", quiet = TRUE); 
+install.packages("ggplot2", quiet = TRUE); 
+devtools::install_github("RcppCore/Rcpp", quiet = TRUE); 
+devtools::install_github("rstats-db/DBI", quiet = TRUE); 
+devtools::install_github("rstats-db/RMySQL", quiet = TRUE); 
+devtools::install_github("rstats-db/RPostgres", quiet = TRUE);
+devtools::install_github("jalvesaq/VimCom", quiet = TRUE);
+devtools::install_github("jalvesaq/colorout", quiet = TRUE);
+install.packages("setwidth", quiet = TRUE);
+devtools::install_github("renkun-ken/pipeR", quiet = TRUE);'
 
 echo $INSTALL_SCRIPT >> tmp.R
 
