@@ -16,7 +16,7 @@ if(interactive()){
   require(devtools)
   require(data.table)
   require(stringr)
-  require(magrittr)
+  require(pipeR)
   require(ggplot2)
   require(reshape2)
 
