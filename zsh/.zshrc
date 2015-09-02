@@ -1,5 +1,35 @@
+# aliases and exports to make sure that
+# the tmux plugin starts the right tmux
+
+# alias for starting tmux in -2
+alias tmux="tmux -2" 
+
+# default term to 256-color
+export TERM='xterm-256color'
+
+# have zsh start in a tmux session
+export ZSH_TMUX_AUTOSTART=true 
+
+# alias for vim r plugin
+alias vim="vim --servername VIM"
+
+# Example aliases
+alias zshconfig="vim ~/.zshrc"
+alias sourceZshConfig="source ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
+
+# alias for editing .vimrc
+alias vimrc="vim ~/.vimrc" 
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+
+# User configuration
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
+export PATH="/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$JAVA_HOME/bin"
+
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8 
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -45,18 +75,11 @@ ZSH_THEME="steeef"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
-# User configuration
-export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
-export PATH="/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$JAVA_HOME/bin"
-
+plugins=(git tmux)
+#
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
-
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -64,31 +87,3 @@ export LANG=en_US.UTF-8
 # else
 #   export EDITOR='mvim'
 # fi
-
-# default term to 256-color
-export TERM='xterm-256color'
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-alias zshconfig="vim ~/.zshrc"
-alias sourceZshConfig="source ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
-
-# alias for vim r plugin
-alias vim="vim --servername VIM"
-
-# alias for starting tmux in -2
-alias tmux="tmux -2"
-
-# alias for editing .vimrc
-alias vimrc="vim ~/.vimrc"
