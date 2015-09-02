@@ -13,11 +13,13 @@ Plugin 'gmarik/Vundle.vim'
 
 " The following are examples of different formats supported.
 " plugin on GitHub repo
-" Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive' " access git through vim command-line
+
 " plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
+Plugin 'L9' " this is a utility package, likely required by other plugins
+
 " Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'wincent/command-t' " brow files intelligently, needs ruby-dev 
 
 " Get latest versions of Vim-R plugin and runtime files
 " vim R-plugin
