@@ -68,7 +68,7 @@ devtools::install_github("rstats-db/RPostgres");
 devtools::install_github("jalvesaq/VimCom");
 devtools::install_github("jalvesaq/colorout");
 install.packages("setwidth");
-install.packages("magrittr");'
+devtools::install_github("renkun-ken/pipeR");'
 
 echo $INSTALL_SCRIPT >> tmp.R
 
