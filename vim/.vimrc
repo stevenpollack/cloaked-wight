@@ -99,7 +99,7 @@ let vimrplugin_rconsole_width = 100
 
 " start vimr highlighting for the following
 " libraries:
-let vimrplugin_start_libs = "base,stats,graphics,grDevices,utils,methods,data.table,stringr,devtools,magrittr,ggplot2,reshape2"
+let vimrplugin_start_libs = "base,stats,graphics,grDevices,utils,methods,data.table,stringr,devtools,magrittr,pipeR,ggplot2,reshape2"
 
 " have VIM open R documentation in a new tab
 let vimrplugin_vimpager = "tabnew"
@@ -142,3 +142,7 @@ endfunction
 " call RenderRMarkdown silently to suppress the "Press ENTER to continue" prompt
 nnoremap <F2> :silent :call RenderRMarkdown() <CR>
 
+" command-t modifications:
+" make <CR> (enter) open files in a new tab (as opposed to buffer)
+let g:CommandTAcceptSelectionMap = '<C-t>'
+let g:CommandTAcceptSelectionTabMap = '<CR>'
