@@ -17,13 +17,9 @@ Plugin 'tpope/vim-fugitive' " access git through vim command-line
 
 " slimux plugin to make a python copy of vim-r
 Plugin 'epeli/slimux'
-" supertab for tab-completion
-Plugin 'ervandew/supertab'
 " vim-jedi for python-related stuff
 Plugin 'davidhalter/jedi-vim'
 
-" monokai color scheme
-Plugin 'sickill/vim-monokai'
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9' " this is a utility package, likely required by other plugins
 
