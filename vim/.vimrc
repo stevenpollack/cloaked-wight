@@ -23,9 +23,11 @@ Plugin 'davidhalter/jedi-vim'
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9' " this is a utility package, likely required by other plugins
 
-" browse files intelligently, needs ruby-dev
-" Plugin 'wincent/command-t'  
+" unit pre-req, needs to be installed via `VimProcInstall`
+Plugin 'Shougo/vimproc.vim' 
+" browse files intelligently with unite: requires vimproc
 Plugin 'Shougo/unite.vim'
+
 
 " Get latest versions of Vim-R plugin and runtime files
 " vim R-plugin
@@ -163,7 +165,7 @@ nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file
 nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
 nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
 nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
-nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
 
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()
