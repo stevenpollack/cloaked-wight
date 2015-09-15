@@ -24,7 +24,8 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'L9' " this is a utility package, likely required by other plugins
 
 " browse files intelligently, needs ruby-dev
-Plugin 'wincent/command-t'  
+" Plugin 'wincent/command-t'  
+Plugin 'Shougo/unite.vim'
 
 " Get latest versions of Vim-R plugin and runtime files
 " vim R-plugin
@@ -115,7 +116,8 @@ set mouse=a
 " airline settings
 " let g:airline_powerline_fonts = 1
 set laststatus=2
-let g:airline_theme='simple'
+let g:airline_theme='bubblegum'
+let g:airline#extensions#tabline#enabled = 1
 
 " set tab to look like 2 space
 set sw=2 " indent = 2 spacesd
@@ -151,9 +153,24 @@ nnoremap <F2> :silent :call RenderRMarkdown() <CR>
 map <Leader>s :SlimuxREPLSendLine<CR>
 vmap <Leader>s :SlimuxREPLSendSelection<CR>
 map <Leader>a :SlimuxShellLast<CR>
-map <Leader>k :SlimuxSendKeysLast<CR>
+map <Leader>k :SlimuxSendKeysLast<CR> 
 
-" command-t modifications:
-" make <CR> (enter) open files in a new tab (as opposed to buffer)
-let g:CommandTAcceptSelectionMap = '<C-t>'
-let g:CommandTAcceptSelectionTabMap = '<CR>'
+" Unite
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  " Play nice with supertab
+  let b:SuperTabDisabled=1
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction
