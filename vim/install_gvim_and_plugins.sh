@@ -57,12 +57,11 @@ export PLUGIN_INSTALLATION=1
 vim +PluginInstall +qall now > /dev/null
 unset PLUGIN_INSTALLATION
 
-# compile command-t -- this may require ruby-dev
-echo "compiling command-t..."
+# compile vimproc
+echo "compiling vimproc..."
+vim +VimProcInstall +qall now
 CURRENT_DIR=$(pwd)
-cd ~/.vim/bundle/command-t/ruby/command-t
-ruby extconf.rb
-make
+cd ~/.vim/bundle/vimproc
 cd $CURRENT_DIR
 
 echo "install_gvim_and_plugins: done..."
