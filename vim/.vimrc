@@ -76,23 +76,13 @@ set number
 " enable 256-color support
 set t_Co=256
 
-if has("gui_running")
-endif
+syntax enable
+colorscheme southernlights
 
-" if PLUGIN_INSTALLATION is defined, it's because
-" we're installing vim plugin's, and therefore
-" southernlights doesn't exist. This will cause
-" the provisioning to wait for ENTER or some other
-" command... 
-let s:plugin_installation = $PLUGIN_INSTALLATION
-
-if ! s:plugin_installation
-  " set color scheme
-  syntax enable
-  colorscheme southernlights
-endif
-
-unlet s:plugin_installation
+" buffer mappings
+map <Leader>bn :bn<CR>
+map <Leader>bp :bp<CR>
+map <Leader>bq :bd<CR>
 
 " have r-plugin respect custom ~/.tmux.conf
 let vimrplugin_notmuxconf = 1
@@ -176,3 +166,10 @@ function! s:unite_settings()
   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
 endfunction
+
+" Use ag for search
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
+endif
