@@ -7,9 +7,6 @@
 
 echo "install_gvim_and_plugins: starting..."
 
-echo "installing ruby[-dev] for use with gvim..."
-sudo apt-get install -y ruby-dev > /dev/null
-
 # check for gvim and install
 echo "Checking for gvim..."
 gvim --version 2>&1 > /dev/null # suppress output
