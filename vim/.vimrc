@@ -80,9 +80,9 @@ syntax enable
 colorscheme southernlights
 
 " buffer mappings
-map <Leader>bn :bn<CR>
-map <Leader>bp :bp<CR>
-map <Leader>bq :bd<CR>
+map gt :bn<CR>
+map gT :bp<CR>
+map gq :bd<CR>
 
 " have r-plugin respect custom ~/.tmux.conf
 let vimrplugin_notmuxconf = 1
@@ -151,6 +151,7 @@ map <Leader>k :SlimuxSendKeysLast<CR>
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+nnoremap <leader>g :<C-u>Unite -no-split -buffer-name=files -start-insert grep:!<cr>
 nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
 nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
 nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
@@ -170,6 +171,6 @@ endfunction
 " Use ag for search
 if executable('ag')
   let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor'
   let g:unite_source_grep_recursive_opt = ''
 endif
