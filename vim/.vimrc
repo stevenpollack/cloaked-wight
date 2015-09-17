@@ -28,6 +28,9 @@ Plugin 'Shougo/vimproc.vim'
 " browse files intelligently with unite: requires vimproc
 Plugin 'Shougo/unite.vim'
 
+" getting punched in the face is no way to tango:
+" vim-bbye stops :bdelete from nuking (v|h)splits
+Plugin 'moll/vim-bbye'
 
 " Get latest versions of Vim-R plugin and runtime files
 " vim R-plugin
@@ -82,7 +85,18 @@ colorscheme southernlights
 " buffer mappings
 map gt :bn<CR>
 map gT :bp<CR>
-map gq :bd<CR>
+
+" use vim-bbye to close buffers
+map gq :Bdelete<CR> 
+" close all open buffers
+map gqa :bufdo :Bdelete<CR>
+
+" Save whenever switching windows or leaving vim. This is useful when running
+" the tests inside vim without having to save all files first.
+au FocusLost,WinLeave * :silent! wa
+
+" Trigger autoread when changing buffers or coming back to vim.
+au FocusGained,BufEnter * :silent! !
 
 " have r-plugin respect custom ~/.tmux.conf
 let vimrplugin_notmuxconf = 1
