@@ -113,8 +113,8 @@ let vimrplugin_rconsole_width = 100
 " libraries:
 let vimrplugin_start_libs = "base,stats,graphics,grDevices,utils,methods,data.table,stringr,devtools,magrittr,pipeR,ggplot2,reshape2"
 
-" have VIM open R documentation in a new tab
-let vimrplugin_vimpager = "tabnew"
+" have VIM open R documentation in a horizontal split
+let vimrplugin_vimpager = "horizontal"
 
 " set mouse to allow for scrolling in TMUX
 set mouse=a
