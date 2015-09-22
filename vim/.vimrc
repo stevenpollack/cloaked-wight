@@ -111,7 +111,7 @@ let vimrplugin_rconsole_width = 100
 
 " start vimr highlighting for the following
 " libraries:
-let vimrplugin_start_libs = "base,stats,graphics,grDevices,utils,methods,data.table,stringr,devtools,magrittr,pipeR,ggplot2,reshape2"
+let vimrplugin_start_libs = "base,stats,graphics,grDevices,utils,methods,data.table,stringr,devtools,pipeR,ggplot2"
 
 " have VIM open R documentation in a horizontal split
 let vimrplugin_vimpager = "horizontal"
