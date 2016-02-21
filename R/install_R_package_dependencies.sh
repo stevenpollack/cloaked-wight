@@ -53,14 +53,13 @@ sudo ln -fs $RPROFILE ~/.Rprofile
 echo Linked ~/.Rprofile "->" $RPROFILE ...
 mkdir ~/.Rpkgs # this is the new local library-site
 
+# setup R environment
+echo "Creating conda-R environment..."
+conda install -y --channel r r-essentials r-devtools r-stringr
 
-echo "Installing 'devtools', 'data.table', 'ggplot2', 'reshape2', 'string', 'Rcpp', 'DBI', 'RMySQL', 'RPostgres', 'vimcom', 'colorout', 'setwidth'..."
-INSTALL_SCRIPT='options(repos = c(CRAN = "http://cran.rstudio.com")); 
-install.packages("stringr", quiet = TRUE); 
-install.packages("devtools", quiet = TRUE); 
-install.packages("reshape2", quiet = TRUE);
-install.packages("data.table", quiet = TRUE); 
-install.packages("ggplot2", quiet = TRUE); 
+echo "Installing packages with devtools..."
+cat >> tmp.R <<EOT
+options(repos = c(CRAN = "http://cran.rstudio.com")); 
 devtools::install_github("RcppCore/Rcpp", quiet = TRUE); 
 devtools::install_github("rstats-db/DBI", quiet = TRUE); 
 devtools::install_github("rstats-db/RMySQL", quiet = TRUE); 
@@ -68,9 +67,8 @@ devtools::install_github("rstats-db/RPostgres", quiet = TRUE);
 devtools::install_github("jalvesaq/VimCom", quiet = TRUE);
 devtools::install_github("jalvesaq/colorout", quiet = TRUE);
 install.packages("setwidth", quiet = TRUE);
-devtools::install_github("renkun-ken/pipeR", quiet = TRUE);'
-
-echo $INSTALL_SCRIPT >> tmp.R
+devtools::install_github("renkun-ken/pipeR", quiet = TRUE);
+EOT
 
 sudo Rscript -e "source('tmp.R')" || {
   echo "One or more R packages failed to install...";
