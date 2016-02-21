@@ -1,3 +1,4 @@
+#!/bin/bash
 
 FAILED_LIBS=""
 EXIT_CODE=0
@@ -55,11 +56,12 @@ mkdir ~/.Rpkgs # this is the new local library-site
 
 # setup R environment
 echo "Creating conda-R environment..."
+source ~/.zshrc
 conda install -y --channel r r-essentials r-devtools r-stringr
 
 echo "Installing packages with devtools..."
 cat >> tmp.R <<EOT
-options(repos = c(CRAN = "http://cran.rstudio.com")); 
+options(repos = c(CRAN = "https://cran.rstudio.com")); 
 devtools::install_github("RcppCore/Rcpp", quiet = TRUE); 
 devtools::install_github("rstats-db/DBI", quiet = TRUE); 
 devtools::install_github("rstats-db/RMySQL", quiet = TRUE); 
