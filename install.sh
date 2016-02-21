@@ -1,12 +1,13 @@
 #!/bin/bash
 
 # 0. clean up translation packages
-# 1. install JDK 7 and wget postgres JDBC driver
-# 2. zsh
-# 3. gvim
+# 1. zsh
+# 2. install python
+# 3. install JDK 7 and wget postgres JDBC driver
+# 4. gvim
 # 5. update repo for R and install latest version
 # 6. install desired R packages and necessary library headers
-# 4. tmux -- depends on R, for version checks
+# 7. tmux -- depends on R, for version checks
 
 sudo sh remove_translation_packages.sh 
 if [ ! $? -eq 0 ]; then
@@ -14,15 +15,21 @@ if [ ! $? -eq 0 ]; then
   exit 1
 fi
 
-sudo sh misc/install_jdk_and_postgres_driver.sh
-if [ ! $? -eq 0 ]; then
-  echo "misc/install_jdk_and_postgres_driver.sh failed..."
-  exit 1
-fi
-
 sudo sh zsh/install_git_and_zsh.sh
 if [ ! $? -eq 0 ]; then
   echo "zsh/install_git_and_zsh.sh failed..."
+  exit 1
+fi 
+
+sudo sh python/install_miniconda.sh
+if [ ! $? -eq 0 ]; then
+  echo "python/install_miniconda.sh failed..."
+  exit 1
+fi 
+
+sudo sh misc/install_jdk_and_postgres_driver.sh
+if [ ! $? -eq 0 ]; then
+  echo "misc/install_jdk_and_postgres_driver.sh failed..."
   exit 1
 fi
 
