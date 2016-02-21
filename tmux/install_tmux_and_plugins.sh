@@ -29,12 +29,24 @@ check_tmux_version()
   tmux -V 2>&1 > /dev/null # suppress output
   TMUX_IS_AVAILABLE=$?
 
+  export TMUX_VERSION=0.0
+
   if [ $TMUX_IS_AVAILABLE -eq 0 ]; then
     export TMUX_VERSION=$(tmux -V | sed -e 's/tmux\s*//g')
-    echo $(Rscript -e 'cat(Sys.getenv("TMUX_VERSION") > "1.9")')
-  else
-    echo "FALSE"
   fi
+
+  cat <<EOT > check_tmux_version.py
+import os
+tmux_version = os.environ.get('TMUX_VERSION')
+if tmux_version and tmux_version > '1.9':
+    print("TRUE")
+else:
+    print("FALSE")
+EOT
+
+  export OUTPUT=$(python3 check_tmux_version.py)
+  rm check_tmux_version.py
+  echo $OUTPUT
 }
 
 echo "Checking for tmux..."
@@ -45,7 +57,6 @@ TMUX_IS_AVAILABLE=$?
 # this is actually the first letter of the version name. E.g.,
 # if version is Trusty, $UBUNTU_VERSION='t'.
 UBUNTU_VERSION=$(lsb_release -c | sed -e 's/Codename:\s*\(\w\)\w*/\1/g')
-#UBUNTU_VERSION=$(lsb_release -c | sed -e 's/Codename:\s*//g')
 
 VERSION_IS_GOOD=$(check_tmux_version)
 
