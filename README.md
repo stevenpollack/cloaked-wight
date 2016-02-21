@@ -14,6 +14,12 @@ Repo for my various profile and config files
 ```
 gconftool --set --type=string /apps/gnome-terminal/profiles/Default/encoding en_US.UTF-8
 ```
+* if using ubuntu from a lenovo (e.g. ideapad), follow
+[these
+instructions](http://askubuntu.com/questions/262003/how-do-i-get-brightness-working-on-a-lenovo-ideapad-yoga)
+to restore functionality to the brightness button. In particular,
+modify the `_DEFAULT` value in `/etc/default/grub` and add
+`blacklist lenovo_laptop` to the blacklisted hardware (see accepted answer).
 
 ### Testing:
 * Install scripts are tested using
