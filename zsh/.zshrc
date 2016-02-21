@@ -25,9 +25,7 @@ alias vimrc="vim ~/.vimrc"
 export ZSH=$HOME/.oh-my-zsh
 
 # User configuration
-export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
-export ANACONDA=~/anaconda
-export PATH="$ANACONDA/bin:$JAVA_HOME/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
+export PATH="/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8 
