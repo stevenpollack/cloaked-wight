@@ -19,8 +19,10 @@ else
 fi
 
 # install vundle
-echo "installing vundle..."
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
+  echo "installing vundle..."
+  git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
 
 # install powerline fonts for vim-airline
 if [ ! -d ~/.powerline_fonts ]; then
@@ -43,9 +45,8 @@ if [ ! -f $VIMRC ]; then # this is being called from someplace else!
   exit
 fi
 
-sudo ln -fs $VIMRC ~/.vimrc
-
-echo "Linked ~/.vimrc ->" $VIMRC ...
+echo "Linking ~/.vimrc ->" $VIMRC ...
+ln -fs $VIMRC ~/.vimrc 
 
 # run the plugin installs:
 # see: http://stackoverflow.com/questions/12834370/run-vim-command-from-commandline
