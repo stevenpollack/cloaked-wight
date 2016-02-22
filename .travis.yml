@@ -2,5 +2,7 @@ sudo: required
 dist: trusty
 language: c
 install: 
-  - sudo sh install.sh
+  - source remove_translation_packages.sh 
+  - source zsh/install_git_and_zsh.sh
+  - source setup_science_stack.sh
 script: echo "Done provisioning."
