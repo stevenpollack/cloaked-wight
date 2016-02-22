@@ -5,9 +5,9 @@ EXIT_CODE=0
 
 echo "Installing headers for 'XML', 'git2r' and 'RCurl'..."
 #sudo apt-get install -y libxml2-dev > /dev/null || {
-  FAILED_LIBS=$(echo $FAILED_LIBS "libxm2-dev");
-  EXIT_CODE=1;
-}
+#  FAILED_LIBS=$(echo $FAILED_LIBS "libxm2-dev");
+#  EXIT_CODE=1;
+#}
 
 sudo apt-get install -y libcurl4-openssl-dev > /dev/null || {
   FAILED_LIBS=$(echo $FAILED_LIBS "libcurl4-openssl-dev");
