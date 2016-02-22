@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/zsh
 
 FAILED_LIBS=""
 EXIT_CODE=0
@@ -58,7 +58,6 @@ fi
 
 # setup R environment
 echo "Creating conda-R environment..."
-source ~/.zshrc
 conda install -y --channel r r-data.table r-devtools r-stringr
 
 # make sure the default CA bundle is available
