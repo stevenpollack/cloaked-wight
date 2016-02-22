@@ -1,8 +1,15 @@
 # default repo to rstudio AWS CRAN mirror:
-options(repos = c(CRAN = "http://cran.rstudio.com"))
+options(repos = c(CRAN = "https://cran.rstudio.com"))
 
-# set default library location to ~/.Rpkgs
-.libPaths("~/.Rpkgs")
+# change default file download method
+# in the case where R isn't built with
+# proper libcurl support
+if (capabilities("libcurl")) {
+  options(download.file.method = "libcurl")
+} else {
+  options(download.file.method = "wget") 
+  # in the case of OS X set method to 'curl'
+}
 
 if(interactive()){
   

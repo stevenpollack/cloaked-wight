@@ -52,23 +52,22 @@ fi
 
 sudo ln -fs $RPROFILE ~/.Rprofile
 echo Linked ~/.Rprofile "->" $RPROFILE ...
-if [ ! -d ~/.Rpkgs ]; then
-  mkdir ~/.Rpkgs # this is the new local library-site
-fi
+
+echo "Setting up CA Certs for libcurl/devtools..."
 
 # make sure the default CA bundle is available
-CA_BUNDLE_DIR=/etc/pki/tls/certs
-CA_BUNDLE=$CA_BUNDLE_DIR/ca-bundle.pem
-if [ ! -d $CA_BUNDLE_DIR ]; then
+CURL_CA_BUNDLE_DIR=/etc/pki/tls/certs
+export CURL_CA_BUNDLE=$CURL_CA_BUNDLE_DIR/ca-bundle.pem
+
+if [ ! -d $CURL_CA_BUNDLE_DIR ]; then
   sudo mkdir -p /etc/pki/tls/certs
 fi
-if [ ! -f $CA_BUNDLE ]; then
-  sudo wget -O $CA_BUNDLE https://curl.haxx.se/ca/cacert.pem
+if [ ! -f $CURL_CA_BUNDLE ]; then
+  sudo wget -O $CURL_CA_BUNDLE https://curl.haxx.se/ca/cacert.pem
 fi
 
-sudo ln -fs $CA_BUNDLE $CA_BUNDLE_DIR/ca-bundle.crt
+sudo ln -fs $CURL_CA_BUNDLE $CURL_CA_BUNDLE_DIR/ca-bundle.crt
 sudo chown -R $(whoami) /etc/pki/tls/certs 
-#export CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 
 # setup R environment
 echo "Creating conda-R environment..."
@@ -80,19 +79,14 @@ conda install -y --channel r r-data.table r-devtools r-stringr
 echo "Installing packages with devtools..." 
 cat > tmp.R <<EOT
 options(repos = c(CRAN = "https://cran.rstudio.com")); 
-if (capabilities("libcurl")) {
-  options(download.file.method = "libcurl")
-} else {
-  options(download.file.method = "wget") 
-}
 install.packages("setwidth");
 devtools::install_github("RcppCore/Rcpp"); 
-#devtools::install_github("rstats-db/DBI"); 
-#devtools::install_github("rstats-db/RMySQL"); 
-#devtools::install_github("rstats-db/RPostgres");
-#devtools::install_github("jalvesaq/VimCom");
-#devtools::install_github("jalvesaq/colorout");
-#devtools::install_github("renkun-ken/pipeR");
+devtools::install_github("rstats-db/DBI"); 
+devtools::install_github("rstats-db/RMySQL"); 
+devtools::install_github("rstats-db/RPostgres");
+devtools::install_github("jalvesaq/VimCom");
+devtools::install_github("jalvesaq/colorout");
+devtools::install_github("renkun-ken/pipeR");
 EOT
 
 R --file=tmp.R || {
@@ -107,4 +101,3 @@ if [ $EXIT_CODE -eq 1 ]; then
 fi
 
 echo "install_R_package_dependencies.sh: done..."
-exit $EXIT_CODE
