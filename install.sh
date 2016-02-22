@@ -5,9 +5,9 @@
 # 2. install python
 # 3. install JDK 7 and wget postgres JDBC driver
 # 4. gvim
-# 5. update repo for R and install latest version
-# 6. install desired R packages and necessary library headers
-# 7. tmux -- depends on R, for version checks
+# 5. tmux -- depends on python, for version checks
+# 6. update repo for R and install latest version
+# 7. install desired R packages and necessary library headers
 
 sudo sh remove_translation_packages.sh 
 if [ ! $? -eq 0 ]; then
@@ -39,6 +39,12 @@ if [ ! $? -eq 0 ]; then
   exit 1
 fi
 
+sudo sh tmux/install_tmux_and_plugins.sh
+if [ ! $? -eq 0 ]; then
+  echo "tmux/install_tmux_and_plugins.sh failed..."
+  exit 1
+fi 
+
 # sudo sh R/update_ubuntu_R_repo.sh
 if [ ! $? -eq 0 ]; then
   echo "R/update_ubuntu_R_repo.sh failed..."
@@ -51,8 +57,4 @@ if [ ! $? -eq 0 ]; then
   exit 1
 fi 
 
-sudo sh tmux/install_tmux_and_plugins.sh
-if [ ! $? -eq 0 ]; then
-  echo "tmux/install_tmux_and_plugins.sh failed..."
-  exit 1
-fi 
+
