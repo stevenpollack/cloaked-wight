@@ -57,9 +57,9 @@ if [ ! -d ~/.Rpkgs ]; then
 fi
 
 # setup R environment
-#echo "Creating conda-R environment..."
-#source ~/.zshrc
-#conda install -y --channel r r-data.table r-devtools r-stringr
+echo "Creating conda-R environment..."
+source ~/.zshrc
+conda install -y --channel r r-data.table r-devtools r-stringr
 
 # make sure the default CA bundle is available
 CA_BUNDLE_DIR=/etc/pki/tls/certs
@@ -77,7 +77,6 @@ sudo chown -R $(whoami) /etc/pki/tls/certs
 #export CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 
 echo "Installing packages with devtools..."
-source ~/.zshrc
 
 cat > tmp.R <<EOT
 options(repos = c(CRAN = "https://cran.rstudio.com")); 
