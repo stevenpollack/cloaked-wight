@@ -1,5 +1,7 @@
 #!/usr/bin/zsh
 
+echo "Installing miniconda..."
+
 # install anaconda
 miniconda=Miniconda3-latest-Linux-x86_64.sh
 anaconda_dir=~/anaconda
@@ -13,6 +15,7 @@ chmod +x $miniconda
 bash $miniconda -b -p $anaconda_dir 
 
 # add anaconda bin to zshrc and export it for future scripts
+echo "prepending anaconda's location to PATH in .zshrc..."
 cat >> ~/.zshrc << END
 
 # add for anaconda install
@@ -21,3 +24,4 @@ END
 
 export PATH=$anaconda_bin:$PATH
 
+echo "conda installation complete..."
