@@ -75,7 +75,11 @@ Vagrant.configure(2) do |config|
 
   # provisioning should follow the installation order in makefile, but first
   # we need to change directories to /vagrant (where cloaked-wight is located).
-  config.vm.provision "install.sh", privileged: false, type: "shell" do |s|
-    s.inline = "cd /vagrant; sudo sh ./install.sh"
-  end
+  config.vm.provision "full_provision.sh",
+    privileged: false,
+    type: "shell",
+    inline: <<-SHELL
+      cd /vagrant
+      source full_provision.sh
+    SHELL
 end
