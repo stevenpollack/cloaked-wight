@@ -35,7 +35,7 @@ check_tmux_version()
     export TMUX_VERSION=$(tmux -V | sed -e 's/tmux\s*//g')
   fi
 
-  cat <<EOT > check_tmux_version.py
+  cat > check_tmux_version.py <<EOT 
 import os
 tmux_version = os.environ.get('TMUX_VERSION')
 if tmux_version and tmux_version > '1.9':
@@ -107,10 +107,9 @@ if [ ! -f $TMUXCONF ]; then # this is being called from someplace else!
   exit 1
 fi
 
-sudo ln -fs $TMUXCONF ~/.tmux.conf
-if [ $? -eq 0 ]; then
-echo Linked ~/.tmux.conf "->" $TMUXCONF ...
-else
+echo Linking ~/.tmux.conf "->" $TMUXCONF ...
+ln -fs $TMUXCONF ~/.tmux.conf
+if [ ! $? -eq 0 ]; then
   echo "Failed to create symlink between ~/.tmux.conf and" $TMUXCONF
   exit 1
 fi
@@ -128,4 +127,3 @@ tmux new-session -d
 tmux kill-server
 
 echo "install_tmux_and_plugins.sh: done..."
-exit
