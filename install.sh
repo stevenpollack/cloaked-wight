@@ -33,7 +33,7 @@ if [ ! $? -eq 0 ]; then
   exit 1
 fi
 
-sh vim/install_gvim_and_plugins.sh
+bash vim/install_gvim_and_plugins.sh
 if [ ! $? -eq 0 ]; then
   echo "vim/install_gvim_and_plugins.sh failed..."
   exit 1
