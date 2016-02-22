@@ -52,17 +52,37 @@ fi
 
 sudo ln -fs $RPROFILE ~/.Rprofile
 echo Linked ~/.Rprofile "->" $RPROFILE ...
-mkdir ~/.Rpkgs # this is the new local library-site
+if [ ! -d ~/.Rpkgs ]; then
+  mkdir ~/.Rpkgs # this is the new local library-site
+fi
 
 # setup R environment
-echo "Creating conda-R environment..."
-source ~/.zshrc
-conda install -y --channel r r-essentials r-devtools r-stringr
+#echo "Creating conda-R environment..."
+#source ~/.zshrc
+#conda install -y --channel r r-data.table r-devtools r-stringr
+
+# make sure the default CA bundle is available
+CA_BUNDLE_DIR=/etc/pki/tls/certs
+CA_BUNDLE=$CA_BUNDLE_DIR/ca-bundle.pem
+if [ ! -d $CA_BUNDLE_DIR ]; then
+  mkdir -p /etc/pki/tls/certs
+fi
+if [ ! -f $CA_BUNDLE ]; then
+  wget -O $CA_BUNDLE https://curl.haxx.se/ca/cacert.pem
+fi
+
+sudo ln -fs $CA_BUNDLE $CA_BUNDLE_DIR/ca-bundle.crt
+sudo chown -R $(whoami) /etc/pki/tls/certs
+
+#export CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 
 echo "Installing packages with devtools..."
-cat >> tmp.R <<EOT
+source ~/.zshrc
+
+cat > tmp.R <<EOT
 options(repos = c(CRAN = "https://cran.rstudio.com")); 
-devtools::install_github("RcppCore/Rcpp", quiet = TRUE); 
+#install.packages(c("data.table", "devtools", "stringr"), quiet=TRUE);
+devtools::install_github("RcppCore/Rcpp", quiet = FALSE); 
 devtools::install_github("rstats-db/DBI", quiet = TRUE); 
 devtools::install_github("rstats-db/RMySQL", quiet = TRUE); 
 devtools::install_github("rstats-db/RPostgres", quiet = TRUE);
@@ -72,12 +92,12 @@ install.packages("setwidth", quiet = TRUE);
 devtools::install_github("renkun-ken/pipeR", quiet = TRUE);
 EOT
 
-sudo Rscript -e "source('tmp.R')" || {
+R --file=tmp.R || {
   echo "One or more R packages failed to install...";
   EXIT_CODE=1;
 }
 
-rm tmp.R
+#rm tmp.R
 
 if [ $EXIT_CODE -eq 1 ]; then
   exit $EXIT_CODE
