@@ -3,4 +3,4 @@ dist: trusty
 language: c
 install: 
   - sudo sh install.sh
-script: Rscript -e 'cat(0)'
+script: echo "Done provisioning."
