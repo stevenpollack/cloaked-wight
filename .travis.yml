@@ -6,5 +6,5 @@ before_install:
   - sudo apt-get install -y git
   - source zsh/install_git_and_zsh.sh
 install: 
-  - zsh setup_science_stack.sh
+  - ./setup_science_stack.zsh
 script: echo "Done provisioning."
