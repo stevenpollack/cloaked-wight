@@ -2,7 +2,7 @@
 
 # install anaconda
 miniconda=Miniconda3-latest-Linux-x86_64.sh
-anaconda_dir=/opt/anaconda
+anaconda_dir=~/anaconda
 anaconda_bin=$anaconda_dir/bin
 
 if [ ! -e $miniconda ]; then
@@ -14,9 +14,9 @@ bash $miniconda -b -p $anaconda_dir
 
 # add anaconda bin to zshrc and export it for future scripts
 cat >> ~/.zshrc << END
-# add for anaconda install
-export PATH=$anaconda_bin:\$PATH
 
+# add for anaconda install
+export PATH=$anaconda_bin:\$PATH 
 END
 
 export PATH=$anaconda_bin:$PATH
