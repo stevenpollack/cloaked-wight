@@ -80,15 +80,14 @@ echo "Installing packages with devtools..."
 
 cat > tmp.R <<EOT
 options(repos = c(CRAN = "https://cran.rstudio.com")); 
-#install.packages(c("data.table", "devtools", "stringr"), quiet=TRUE);
-devtools::install_github("RcppCore/Rcpp", quiet = FALSE); 
-devtools::install_github("rstats-db/DBI", quiet = TRUE); 
-devtools::install_github("rstats-db/RMySQL", quiet = TRUE); 
-devtools::install_github("rstats-db/RPostgres", quiet = TRUE);
-devtools::install_github("jalvesaq/VimCom", quiet = TRUE);
-devtools::install_github("jalvesaq/colorout", quiet = TRUE);
-install.packages("setwidth", quiet = TRUE);
-devtools::install_github("renkun-ken/pipeR", quiet = TRUE);
+devtools::install_github("RcppCore/Rcpp"); 
+devtools::install_github("rstats-db/DBI"); 
+devtools::install_github("rstats-db/RMySQL"); 
+devtools::install_github("rstats-db/RPostgres");
+devtools::install_github("jalvesaq/VimCom");
+devtools::install_github("jalvesaq/colorout");
+devtools::install_github("renkun-ken/pipeR");
+install.packages("setwidth");
 EOT
 
 R --file=tmp.R || {
@@ -96,7 +95,7 @@ R --file=tmp.R || {
   EXIT_CODE=1;
 }
 
-#rm tmp.R
+rm tmp.R
 
 if [ $EXIT_CODE -eq 1 ]; then
   exit $EXIT_CODE
