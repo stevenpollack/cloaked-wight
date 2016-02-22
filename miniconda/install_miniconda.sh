@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/bin/bash
 
 echo "Installing miniconda..."
 

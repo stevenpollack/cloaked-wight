@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/bin/bash
 
 source vim/install_gvim_and_plugins.sh
 if [ ! $? -eq 0 ]; then
