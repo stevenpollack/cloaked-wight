@@ -21,13 +21,13 @@ if [ ! $? -eq 0 ]; then
   exit 1
 fi 
 
-sudo sh python/install_miniconda.sh
+sudo bash miniconda/install_miniconda.sh
 if [ ! $? -eq 0 ]; then
-  echo "python/install_miniconda.sh failed..."
+  echo "miniconda/install_miniconda.sh failed..."
   exit 1
 fi 
 
-sudo sh misc/install_jdk_and_postgres_driver.sh
+#sudo sh misc/install_jdk_and_postgres_driver.sh
 if [ ! $? -eq 0 ]; then
   echo "misc/install_jdk_and_postgres_driver.sh failed..."
   exit 1
@@ -39,13 +39,13 @@ if [ ! $? -eq 0 ]; then
   exit 1
 fi
 
-sudo sh R/update_ubuntu_R_repo.sh
+# sudo sh R/update_ubuntu_R_repo.sh
 if [ ! $? -eq 0 ]; then
   echo "R/update_ubuntu_R_repo.sh failed..."
   exit 1
 fi
 
-sudo sh R/install_R_package_dependencies.sh
+sudo bash R/install_R_package_dependencies.sh
 if [ ! $? -eq 0 ]; then
   echo "R/install_R_package_dependencies.sh failed..."
   exit 1
