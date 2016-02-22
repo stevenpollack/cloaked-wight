@@ -1,8 +1,4 @@
-# 2. install python
-# 4. gvim
-# 5. tmux -- depends on python, for version checks
-# 6. update repo for R and install latest version
-# 7. install desired R packages and necessary library headers
+#!/usr/bin/zsh
 
 source vim/install_gvim_and_plugins.sh
 if [ ! $? -eq 0 ]; then
