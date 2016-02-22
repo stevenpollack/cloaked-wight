@@ -23,8 +23,10 @@ echo "installing vundle..."
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # install powerline fonts for vim-airline
-git clone https://github.com/powerline/fonts.git ~/.powerline_fonts
-sudo ~/.powerline_fonts/install.sh
+if [ ! -d ~/.powerline_fonts ]; then
+  git clone https://github.com/powerline/fonts.git ~/.powerline_fonts
+  sudo ~/.powerline_fonts/install.sh
+fi
 
 # make symlink to vim/.vimrc
 echo "making symlink to vim/.vimrc..."
