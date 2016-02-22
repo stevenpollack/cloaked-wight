@@ -4,7 +4,7 @@ FAILED_LIBS=""
 EXIT_CODE=0
 
 echo "Installing headers for 'XML', 'git2r' and 'RCurl'..."
-sudo apt-get install -y libxml2-dev > /dev/null || {
+#sudo apt-get install -y libxml2-dev > /dev/null || {
   FAILED_LIBS=$(echo $FAILED_LIBS "libxm2-dev");
   EXIT_CODE=1;
 }
@@ -74,7 +74,7 @@ echo "Creating conda-R environment..."
 if [ "$SHELL" != '/usr/bin/zsh' ]; then
   source ~/.zshrc
 fi
-conda install -y --channel r r-data.table r-devtools r-stringr
+conda install -y --channel r r-data.table r-devtools r-stringr r-irkernel jupyter
 
 echo "Installing packages with devtools..." 
 cat > tmp.R <<EOT
