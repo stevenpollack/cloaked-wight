@@ -8,7 +8,7 @@ alias tmux="tmux -2"
 export TERM='xterm-256color'
 
 # have zsh start in a tmux session
-export ZSH_TMUX_AUTOSTART=true 
+export ZSH_TMUX_AUTOSTART=false
 
 # alias for vim r plugin
 alias vim="vim --servername VIM"
@@ -26,9 +26,11 @@ export ZSH=$HOME/.oh-my-zsh
 
 # User configuration
 export PATH="/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
+export SHELL=$(which zsh)
 
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8 
+# You may need to manually set your language environment (LOCALE)
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -86,3 +88,4 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
+
