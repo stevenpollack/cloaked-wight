@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/zsh
 
 # install anaconda
 miniconda=Miniconda3-latest-Linux-x86_64.sh
