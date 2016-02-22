@@ -56,14 +56,6 @@ if [ ! -d ~/.Rpkgs ]; then
   mkdir ~/.Rpkgs # this is the new local library-site
 fi
 
-# setup R environment
-echo "Creating conda-R environment..."
-
-if [ "$SHELL" != '/usr/bin/zsh' ]; then
-  source ~/.zshrc
-fi
-conda install -y --channel r r-data.table r-devtools r-stringr
-
 # make sure the default CA bundle is available
 CA_BUNDLE_DIR=/etc/pki/tls/certs
 CA_BUNDLE=$CA_BUNDLE_DIR/ca-bundle.pem
@@ -75,14 +67,24 @@ if [ ! -f $CA_BUNDLE ]; then
 fi
 
 sudo ln -fs $CA_BUNDLE $CA_BUNDLE_DIR/ca-bundle.crt
-sudo chown -R $(whoami) /etc/pki/tls/certs
-
+sudo chown -R $(whoami) /etc/pki/tls/certs 
 #export CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 
-echo "Installing packages with devtools..."
+# setup R environment
+echo "Creating conda-R environment..."
+if [ "$SHELL" != '/usr/bin/zsh' ]; then
+  source ~/.zshrc
+fi
+conda install -y --channel r r-data.table r-devtools r-stringr
 
+echo "Installing packages with devtools..." 
 cat > tmp.R <<EOT
 options(repos = c(CRAN = "https://cran.rstudio.com")); 
+if (capabilities("libcurl")) {
+  options(download.file.method = "libcurl")
+} else {
+  options(download.file.method = "wget") 
+}
 install.packages("setwidth");
 devtools::install_github("RcppCore/Rcpp"); 
 #devtools::install_github("rstats-db/DBI"); 
