@@ -9,13 +9,13 @@
 # 6. update repo for R and install latest version
 # 7. install desired R packages and necessary library headers
 
-sudo sh remove_translation_packages.sh 
+sh remove_translation_packages.sh 
 if [ ! $? -eq 0 ]; then
   echo "remove_translation_packages.sh failed..."
   exit 1
 fi
 
-sudo sh zsh/install_git_and_zsh.sh
+sh zsh/install_git_and_zsh.sh
 if [ ! $? -eq 0 ]; then
   echo "zsh/install_git_and_zsh.sh failed..."
   exit 1
@@ -33,13 +33,13 @@ if [ ! $? -eq 0 ]; then
   exit 1
 fi
 
-sudo sh vim/install_gvim_and_plugins.sh
+sh vim/install_gvim_and_plugins.sh
 if [ ! $? -eq 0 ]; then
   echo "vim/install_gvim_and_plugins.sh failed..."
   exit 1
 fi
 
-sudo sh tmux/install_tmux_and_plugins.sh
+sh tmux/install_tmux_and_plugins.sh
 if [ ! $? -eq 0 ]; then
   echo "tmux/install_tmux_and_plugins.sh failed..."
   exit 1
@@ -51,7 +51,7 @@ if [ ! $? -eq 0 ]; then
   exit 1
 fi
 
-sudo bash R/install_R_package_dependencies.sh
+bash R/install_R_package_dependencies.sh
 if [ ! $? -eq 0 ]; then
   echo "R/install_R_package_dependencies.sh failed..."
   exit 1
