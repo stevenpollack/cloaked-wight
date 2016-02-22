@@ -80,7 +80,7 @@ echo "Installing packages with devtools..."
 
 cat > tmp.R <<EOT
 options(repos = c(CRAN = "https://cran.rstudio.com")); 
-#devtools::install_github("RcppCore/Rcpp"); 
+devtools::install_github("RcppCore/Rcpp"); 
 #devtools::install_github("rstats-db/DBI"); 
 #devtools::install_github("rstats-db/RMySQL"); 
 #devtools::install_github("rstats-db/RPostgres");
