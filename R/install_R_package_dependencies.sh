@@ -59,16 +59,16 @@ fi
 # setup R environment
 echo "Creating conda-R environment..."
 source ~/.zshrc
-conda install -y --channel r r-data.table r-devtools r-stringr
+#conda install -y --channel r r-data.table r-devtools r-stringr
 
 # make sure the default CA bundle is available
 CA_BUNDLE_DIR=/etc/pki/tls/certs
 CA_BUNDLE=$CA_BUNDLE_DIR/ca-bundle.pem
 if [ ! -d $CA_BUNDLE_DIR ]; then
-  mkdir -p /etc/pki/tls/certs
+  sudo mkdir -p /etc/pki/tls/certs
 fi
 if [ ! -f $CA_BUNDLE ]; then
-  wget -O $CA_BUNDLE https://curl.haxx.se/ca/cacert.pem
+  sudo wget -O $CA_BUNDLE https://curl.haxx.se/ca/cacert.pem
 fi
 
 sudo ln -fs $CA_BUNDLE $CA_BUNDLE_DIR/ca-bundle.crt
@@ -80,6 +80,7 @@ echo "Installing packages with devtools..."
 
 cat > tmp.R <<EOT
 options(repos = c(CRAN = "https://cran.rstudio.com")); 
+install.packages("setwidth");
 devtools::install_github("RcppCore/Rcpp"); 
 #devtools::install_github("rstats-db/DBI"); 
 #devtools::install_github("rstats-db/RMySQL"); 
@@ -87,7 +88,6 @@ devtools::install_github("RcppCore/Rcpp");
 #devtools::install_github("jalvesaq/VimCom");
 #devtools::install_github("jalvesaq/colorout");
 #devtools::install_github("renkun-ken/pipeR");
-install.packages("setwidth");
 EOT
 
 R --file=tmp.R || {
