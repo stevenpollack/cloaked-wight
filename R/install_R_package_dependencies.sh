@@ -59,7 +59,7 @@ fi
 # setup R environment
 echo "Creating conda-R environment..."
 source ~/.zshrc
-#conda install -y --channel r r-data.table r-devtools r-stringr
+conda install -y --channel r r-data.table r-devtools r-stringr
 
 # make sure the default CA bundle is available
 CA_BUNDLE_DIR=/etc/pki/tls/certs
