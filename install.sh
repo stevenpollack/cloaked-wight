@@ -21,7 +21,7 @@ if [ ! $? -eq 0 ]; then
   exit 1
 fi 
 
-sudo bash miniconda/install_miniconda.sh
+bash miniconda/install_miniconda.sh
 if [ ! $? -eq 0 ]; then
   echo "miniconda/install_miniconda.sh failed..."
   exit 1
