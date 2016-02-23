@@ -74,7 +74,7 @@ echo "Creating conda-R environment..."
 if [ "$SHELL" != '/usr/bin/zsh' ]; then
   source ~/.zshrc
 fi
-conda install -y --channel r r-data.table r-devtools r-stringr r-irkernel jupyter
+conda install -y --channel r gcc r-data.table r-devtools r-stringr r-irkernel jupyter
 
 echo "Installing packages with devtools..." 
 cat > tmp.R <<EOT
