@@ -78,15 +78,16 @@ conda install -y --channel r gcc r-data.table r-devtools r-stringr r-irkernel ju
 
 echo "Installing packages with devtools..." 
 cat > tmp.R <<EOT
-options(repos = c(CRAN = "https://cran.rstudio.com")); 
+options(unzip = 'internal',
+        repos = c(CRAN = "https://cran.rstudio.com")); 
 install.packages("setwidth");
-devtools::install_github("RcppCore/Rcpp"); 
-devtools::install_github("rstats-db/DBI"); 
-devtools::install_github("rstats-db/RMySQL"); 
-devtools::install_github("rstats-db/RPostgres");
-devtools::install_github("jalvesaq/VimCom");
-devtools::install_github("jalvesaq/colorout");
-devtools::install_github("renkun-ken/pipeR");
+devtools::install_github(c("jalvesaq/VimCom",
+			   "jalvesaq/colorout",
+			   "renkun-ken/pipeR")); 
+devtools::install_github(c("RcppCore/Rcpp",
+			   "rstats-db/DBI",
+			   "rstats-db/RMySQL",
+			   "rstats-db/RPostgres"));
 EOT
 
 R --file=tmp.R || {
