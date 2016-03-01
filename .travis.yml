@@ -1,5 +1,10 @@
 sudo: required
+dist: trusty
 language: c
+before_install:
+  - source remove_translation_packages.sh 
+  - sudo apt-get install -y git
+  - source zsh/install_git_and_zsh.sh
 install: 
-  - sudo sh install.sh
-script: Rscript -e 'cat(0)'
+  - zsh setup_science_stack.sh
+script: echo "Done provisioning."

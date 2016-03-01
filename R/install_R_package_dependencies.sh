@@ -1,12 +1,13 @@
+#!/bin/bash
 
 FAILED_LIBS=""
 EXIT_CODE=0
 
 echo "Installing headers for 'XML', 'git2r' and 'RCurl'..."
-sudo apt-get install -y libxml2-dev > /dev/null || {
-  FAILED_LIBS=$(echo $FAILED_LIBS "libxm2-dev");
-  EXIT_CODE=1;
-}
+#sudo apt-get install -y libxml2-dev > /dev/null || {
+#  FAILED_LIBS=$(echo $FAILED_LIBS "libxm2-dev");
+#  EXIT_CODE=1;
+#}
 
 sudo apt-get install -y libcurl4-openssl-dev > /dev/null || {
   FAILED_LIBS=$(echo $FAILED_LIBS "libcurl4-openssl-dev");
@@ -51,28 +52,45 @@ fi
 
 sudo ln -fs $RPROFILE ~/.Rprofile
 echo Linked ~/.Rprofile "->" $RPROFILE ...
-mkdir ~/.Rpkgs # this is the new local library-site
 
+echo "Setting up CA Certs for libcurl/devtools..."
 
-echo "Installing 'devtools', 'data.table', 'ggplot2', 'reshape2', 'string', 'Rcpp', 'DBI', 'RMySQL', 'RPostgres', 'vimcom', 'colorout', 'setwidth'..."
-INSTALL_SCRIPT='options(repos = c(CRAN = "http://cran.rstudio.com")); 
-install.packages("stringr", quiet = TRUE); 
-install.packages("devtools", quiet = TRUE); 
-install.packages("reshape2", quiet = TRUE);
-install.packages("data.table", quiet = TRUE); 
-install.packages("ggplot2", quiet = TRUE); 
-devtools::install_github("RcppCore/Rcpp", quiet = TRUE); 
-devtools::install_github("rstats-db/DBI", quiet = TRUE); 
-devtools::install_github("rstats-db/RMySQL", quiet = TRUE); 
-devtools::install_github("rstats-db/RPostgres", quiet = TRUE);
-devtools::install_github("jalvesaq/VimCom", quiet = TRUE);
-devtools::install_github("jalvesaq/colorout", quiet = TRUE);
-install.packages("setwidth", quiet = TRUE);
-devtools::install_github("renkun-ken/pipeR", quiet = TRUE);'
+# make sure the default CA bundle is available
+CURL_CA_BUNDLE_DIR=/etc/pki/tls/certs
+export CURL_CA_BUNDLE=$CURL_CA_BUNDLE_DIR/ca-bundle.pem
 
-echo $INSTALL_SCRIPT >> tmp.R
+if [ ! -d $CURL_CA_BUNDLE_DIR ]; then
+  sudo mkdir -p /etc/pki/tls/certs
+fi
+if [ ! -f $CURL_CA_BUNDLE ]; then
+  sudo wget -O $CURL_CA_BUNDLE https://curl.haxx.se/ca/cacert.pem
+fi
 
-sudo Rscript -e "source('tmp.R')" || {
+sudo ln -fs $CURL_CA_BUNDLE $CURL_CA_BUNDLE_DIR/ca-bundle.crt
+sudo chown -R $(whoami) /etc/pki/tls/certs 
+
+# setup R environment
+echo "Creating conda-R environment..."
+if [ "$SHELL" != '/usr/bin/zsh' ]; then
+  source ~/.zshrc
+fi
+conda install -y --channel r gcc r-data.table r-devtools r-stringr r-irkernel jupyter
+
+echo "Installing packages with devtools..." 
+cat > tmp.R <<EOT
+options(unzip = 'internal',
+        repos = c(CRAN = "https://cran.rstudio.com")); 
+install.packages("setwidth");
+devtools::install_github(c("jalvesaq/VimCom",
+			   "jalvesaq/colorout",
+			   "renkun-ken/pipeR")); 
+devtools::install_github(c("RcppCore/Rcpp",
+			   "rstats-db/DBI",
+			   "rstats-db/RMySQL",
+			   "rstats-db/RPostgres"));
+EOT
+
+R --file=tmp.R || {
   echo "One or more R packages failed to install...";
   EXIT_CODE=1;
 }
@@ -84,4 +102,3 @@ if [ $EXIT_CODE -eq 1 ]; then
 fi
 
 echo "install_R_package_dependencies.sh: done..."
-exit $EXIT_CODE

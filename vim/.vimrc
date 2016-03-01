@@ -36,16 +36,16 @@ Plugin 'moll/vim-bbye'
 " vim R-plugin
 Plugin 'jcfaria/Vim-R-plugin'
 Plugin 'jalvesaq/R-Vim-runtime'
-" powerline plugin
-Plugin 'bling/vim-airline'
+
+" airline plugin + themes
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " tab completion
 Plugin 'ervandew/supertab'
 
-" color schemes:
-" monokai
+" color schemes: monokai, southern lights
 Plugin 'sickill/vim-monokai'
-" vim-r-plugin
 Plugin 'jalvesaq/southernlights'
 
 " syntax highlighting
@@ -122,8 +122,9 @@ set mouse=a
 " airline settings
 " let g:airline_powerline_fonts = 1
 set laststatus=2
-let g:airline_theme='bubblegum'
+let g:airline_theme='light'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 " set tab to look like 2 space
 set sw=2 " indent = 2 spacesd
