@@ -12,7 +12,7 @@ if [ ! $? -eq 0 ]; then
   exit 1
 fi 
 
-source miniconda/install_miniconda.sh
+source misc/install_miniconda.sh
 if [ ! $? -eq 0 ]; then
   echo "miniconda/install_miniconda.sh failed..."
   exit 1
