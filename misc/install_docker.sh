@@ -32,5 +32,9 @@ sudo groupadd docker
 
 sudo gpasswd -a ${USER} docker
 sudo service docker restart
-sudo newgrp docker
-
+# "log-in" and then "log-out"
+# but test docker first
+sudo newgrp docker <<EOT
+docker run hello-world
+exit 
+EOT
