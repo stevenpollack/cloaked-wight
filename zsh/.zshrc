@@ -23,9 +23,14 @@ alias vimrc="vim ~/.vimrc"
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+#
+# Path to anaconda 
+export ANACONDA=~/anaconda
 
 # User configuration
 export PATH="/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
+export PATH=$ANACONDA/bin:$PATH 
+
 export SHELL=$(which zsh)
 
 # You may need to manually set your language environment (LOCALE)
@@ -44,7 +49,4 @@ ZSH_THEME="yes"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git tmux sudo)
 
-source $ZSH/oh-my-zsh.sh
-
-# add for anaconda install
-export PATH=/home/steven/anaconda/bin:$PATH 
+source $ZSH/oh-my-zsh.sh 
