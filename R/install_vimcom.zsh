@@ -13,5 +13,9 @@ devtools::install_github(c("jalvesaq/VimCom",
 EOT
 	
 Rscript tmp.R
-
+EXIT_CODE=$?  
 rm tmp.R 
+
+if [ ! $EXIT_CODE -eq 0 ]; then
+  exit 1
+fi
