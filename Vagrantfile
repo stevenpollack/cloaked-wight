@@ -71,7 +71,7 @@ Vagrant.configure(2) do |config|
     type: "shell",
     inline: "sudo apt-get install -y git > /dev/null"
 
-  # config.vm.provision "check-tmux", type: "shell", inline: "echo `tmux -V`"
+  # config.vm.provision "remove-translational-packages", type: "shell", inline: "source /vagrant/remove_translation_packages.sh"
 
   # provisioning should follow the installation order in makefile, but first
   # we need to change directories to /vagrant (where cloaked-wight is located).
@@ -80,6 +80,6 @@ Vagrant.configure(2) do |config|
     type: "shell",
     inline: <<-SHELL
       cd /vagrant
-      source full_provision.sh
+      make .fully.prd
     SHELL
 end
