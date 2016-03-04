@@ -29,6 +29,8 @@ sudo apt-get install -y docker-engine
 # add user to docker group to avoid needing to
 # run docker with sudo
 sudo groupadd docker  
+
 sudo gpasswd -a ${USER} docker
-sudo newgrp docker
 sudo service docker restart
+sudo newgrp docker
+
