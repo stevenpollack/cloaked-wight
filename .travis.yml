@@ -2,7 +2,8 @@ sudo: required
 dist: trusty
 language: c
 install: 
+  - touch .docker.ind
   - make .minimally.prd
   - make .fully.prd
 script: 
-  - sudo docker run hello-world
+  - Rscript -e 'cat("Provisioning done.", fill=TRUE)'
