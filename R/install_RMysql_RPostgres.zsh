@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 echo "Installing headers for 'RMySQL' and 'RPostgres'..."
 sudo apt-get install -y \
@@ -19,4 +19,3 @@ EOT
 Rscript tmp.R
 
 rm tmp.R 
-
