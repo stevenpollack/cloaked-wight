@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 if [ -z $ANACONDA ]; then
   echo "Error \$ANACONDA is not set; cannot install conda..."
