@@ -2,3 +2,10 @@ site/
 
 # ignore vagrant stuff
 .vagrant/
+
+# ignore Makefile artifacts
+.*.ind
+.*.prd
+.*.red
+.install
+
