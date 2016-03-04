@@ -1,10 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 echo "Installing headers for 'vimcom'..."
-sudo apt-get install -y libx11-dev > /dev/null || {
-  FAILED_LIBS=$(echo $FAILED_LIBS "libx11-dev");
-  EXIT_CODE=1;
-}
+sudo apt-get install -y libx11-dev
 
 echo "Installing packages with devtools..." 
 cat > tmp.R <<EOT
