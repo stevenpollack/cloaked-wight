@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/bash
 
 echo "Installing libcurl4-openssl for devtools..."
 sudo apt-get install -y libcurl4-openssl-dev 
