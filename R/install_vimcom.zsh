@@ -11,6 +11,8 @@ install.packages("setwidth");
 devtools::install_github(c("jalvesaq/VimCom",
 			   "jalvesaq/colorout"))
 EOT
+
+source ~/.zshrc
 	
 Rscript tmp.R
 EXIT_CODE=$?  

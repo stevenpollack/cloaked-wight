@@ -25,7 +25,7 @@
 	touch .vimcom.ind
 
 .base_R.ind: .conda.ind
-	./R/install_R_package_dependencies.zsh
+	./R/install_R_package_dependencies.sh
 	./misc/setup_ca_certs.sh
 	./R/setup_R_environment.zsh
 	touch .base_R.ind
