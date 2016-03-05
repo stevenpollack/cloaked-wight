@@ -2,7 +2,6 @@
 
 # setup R environment
 echo "Creating conda-R environment..."
-source ~/.zshrc
 
 conda install -y --channel r \
   jupyter \

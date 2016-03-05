@@ -17,21 +17,21 @@
 	touch .full_R.ind
 
 .r-dbi.ind: .base_R.ind
-	./R/install_RMysql_RPostgres.zsh
+	exec /usr/bin/env zsh -i R/install_RMysql_RPostgres.zsh
 	touch .r-dbi.ind
 
 .vimcom.ind: .base_R.ind
-	./R/install_vimcom.zsh
+	exec /usr/bin/env zsh -i R/install_vimcom.zsh
 	touch .vimcom.ind
 
 .base_R.ind: .conda.ind
 	./R/install_R_package_dependencies.sh
 	./misc/setup_ca_certs.sh
-	./R/setup_R_environment.zsh
+	exec /usr/bin/env zsh -i R/setup_R_environment.zsh 
 	touch .base_R.ind
 
 .conda.ind: .zsh.ind
-	./misc/install_miniconda.zsh
+	exec /usr/bin/env zsh -i misc/install_miniconda.zsh
 	touch .conda.ind
 
 .docker.ind: .packages.red

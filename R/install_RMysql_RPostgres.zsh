@@ -17,8 +17,6 @@ devtools::install_github(c("RcppCore/Rcpp",
 			   "rstats-db/RPostgres"));
 EOT
 
-source ~/.zshrc
-
 Rscript tmp.R 
 EXIT_CODE=$?  
 rm tmp.R 

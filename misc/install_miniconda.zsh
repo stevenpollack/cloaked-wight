@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-source ~/.zshrc
+#source ~/.zshrc
 
 if [ -z $ANACONDA ]; then
   echo "Error \$ANACONDA is not set; cannot install conda..."
