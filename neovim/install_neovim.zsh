@@ -80,7 +80,7 @@ fi
 # install powerline fonts for vim-airline
 if [ ! -d ~/.powerline_fonts ]; then
   git clone https://github.com/powerline/fonts.git ~/.powerline_fonts
-  sudo ~/.powerline_fonts/install.sh
+  ~/.powerline_fonts/install.sh
 fi
 
 echo Setting up symbolic links...
@@ -106,7 +106,8 @@ ln -fs ~/.nvimrc $INIT_VIM
 
 # run the plugin installs:
 # note that we have to compile VimProc
-echo Installing nvim plugin-ins...
-nvim -c PluginInstall -c VimProcInstall -c qall
+echo Installing neovim plugin-ins...
+nvim -c PlugInstall -c qall
+nvim -c VimProcInstall -c qall
 
 echo "install_neovim: done..."
