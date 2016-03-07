@@ -1,4 +1,6 @@
 call plug#begin()
+" vim-git wrapper
+Plug 'tpope/vim-fugitive'
 
 " vim-jedi for python-related stuff
 Plug 'davidhalter/jedi-vim'
@@ -7,9 +9,9 @@ Plug 'davidhalter/jedi-vim'
 " this is a utility package, likely required by other plugins
 Plug 'vim-scripts/L9' 
 
+" browse files intelligently with unite: requires vimproc
 " unit pre-req, needs to be installed via `VimProcInstall`
 Plug 'Shougo/vimproc.vim' 
-" browse files intelligently with unite: requires vimproc
 Plug 'Shougo/unite.vim'
 
 " getting punched in the face is no way to tango:
