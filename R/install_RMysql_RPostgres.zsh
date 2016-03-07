@@ -2,10 +2,16 @@
 
 echo "Installing headers for RMySQL, RPostgres and Rcpp..."
 sudo apt-get install -y \
-  g++ \
   libmysqlclient-dev \
   libpq-dev \
   pkg-config
+
+# setup OS level IF statement
+# update gmp to 6.0.0a
+conda install -y -c https://conda.anaconda.org/ostrokach gmp 
+# link /usr/lib/.../libgmp.so to anaconda's version:
+ln -fs $ANACONDA/lib/libgmp.so.10 \
+  /usr/lib/x86_64-linux-gnu/libgmp.so.10
 
 echo "Installing packages with devtools..." 
 cat > tmp.R <<EOT
