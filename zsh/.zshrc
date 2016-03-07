@@ -10,20 +10,14 @@ export TERM='xterm-256color'
 # have zsh start in a tmux session
 export ZSH_TMUX_AUTOSTART=false
 
-# alias for vim r plugin
-alias vim="vim --servername VIM"
+# alias for vim to nvim
+alias vim="nvim"
 
-# Example aliases
-alias zshconfig="vim ~/.zshrc"
 alias sourceZshConfig="source ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
-
-# alias for editing .vimrc
-alias vimrc="vim ~/.vimrc" 
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-#
+
 # Path to anaconda 
 export ANACONDA=~/anaconda
 
