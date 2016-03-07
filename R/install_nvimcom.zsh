@@ -1,14 +1,11 @@
-#!/usr/bin/env zsh
-
-echo "Installing headers for 'vimcom'..."
-sudo apt-get install -y libx11-dev
+#!/usr/bin/env zsh -i
 
 echo "Installing packages with devtools..." 
 cat > tmp.R <<EOT
 options(unzip = 'internal',
         repos = c(CRAN = "https://cran.rstudio.com")); 
 install.packages("setwidth");
-devtools::install_github(c("jalvesaq/VimCom",
+devtools::install_github(c("jalvesaq/nvimcom",
 			   "jalvesaq/colorout"))
 EOT
 
