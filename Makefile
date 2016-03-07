@@ -4,13 +4,13 @@
 .fully.prd: .minimally.prd .full_R.ind
 	touch .fully.prd
 
-.minimally.prd: .science_stack.ind .shell_tools.ind
+.minimally.prd: .shell_tools.ind .science_stack.ind
 	touch .minimally.prd
 
-.science_stack.ind: .docker.ind .conda.ind .base_R.ind
+.science_stack.ind: .conda.ind .base_R.ind .docker.ind
 	touch .science_stack.ind
 
-.shell_tools.ind: .packages.red .zsh.ind .vim.ind .tmux.ind
+.shell_tools.ind: .packages.red .zsh.ind .nvim.ind .tmux.ind
 	touch .shell_tools.ind
 
 .full_R.ind: .vimcom.ind .r-dbi.ind
@@ -46,9 +46,9 @@
 	./zsh/install_git_and_zsh.sh
 	touch .zsh.ind
 
-.vim.ind: .packages.red
-	./vim/install_gvim_and_plugins.sh
-	touch .vim.ind
+.nvim.ind: .packages.red .conda.ind
+	exec /usr/bin/env zsh -i neovim/install_neovim.zsh
+	touch .nvim.ind
 
 .tmux.ind: .packages.red
 	./tmux/install_tmux_and_plugins.sh
