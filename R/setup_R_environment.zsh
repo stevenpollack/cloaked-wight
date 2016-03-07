@@ -4,6 +4,7 @@
 echo "Creating conda-R environment..."
 
 conda install -y --channel r \
+  gcc \
   jupyter \
   r-irkernel \
   r-data.table \
