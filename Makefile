@@ -13,16 +13,16 @@
 .shell_tools.ind: .packages.red .zsh.ind .nvim.ind .tmux.ind
 	touch .shell_tools.ind
 
-.full_R.ind: .vimcom.ind .r-dbi.ind
+.full_R.ind: .nvimcom.ind .r-dbi.ind
 	touch .full_R.ind
 
 .r-dbi.ind: .base_R.ind
 	exec /usr/bin/env zsh -i R/install_RMysql_RPostgres.zsh
 	touch .r-dbi.ind
 
-.vimcom.ind: .base_R.ind
-	exec /usr/bin/env zsh -i R/install_vimcom.zsh
-	touch .vimcom.ind
+.nvimcom.ind: .base_R.ind
+	exec /usr/bin/env zsh -i R/install_nvimcom.zsh
+	touch .nvimcom.ind
 
 .base_R.ind: .conda.ind
 	./R/install_R_package_dependencies.sh
