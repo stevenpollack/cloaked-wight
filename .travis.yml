@@ -1,10 +1,9 @@
 sudo: required
 dist: trusty
 language: c
-before_install:
-  - source remove_translation_packages.sh 
-  - sudo apt-get install -y git
-  - source zsh/install_git_and_zsh.sh
 install: 
-  - zsh setup_science_stack.sh
-script: echo "Done provisioning."
+  - touch .docker.ind
+  - make .minimally.prd
+  - make .fully.prd
+script: 
+  - Rscript -e 'cat("Provisioning done.", fill=TRUE)'

@@ -13,11 +13,10 @@ if (capabilities("libcurl")) {
 
 if(interactive()){
   
-  # vim-r-plugin packages:
+  # Nvim-R plugin packages:
   require(colorout)
   require(setwidth)
-  options(vimcom.verbose = 1) # optional
-  require(vimcom)
+  require(nvimcom)
 
   # workhorse packages:
   require(devtools)

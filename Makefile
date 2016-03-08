@@ -1,20 +1,65 @@
+.install: .shell_tools.ind
+	touch .install
+
+.fully.prd: .minimally.prd .full_R.ind
+	touch .fully.prd
+
+.minimally.prd: .shell_tools.ind .science_stack.ind
+	touch .minimally.prd
+
+.science_stack.ind: .conda.ind .base_R.ind .docker.ind
+	touch .science_stack.ind
+
+.shell_tools.ind: .packages.red .zsh.ind .nvim.ind .tmux.ind
+	touch .shell_tools.ind
+
+.full_R.ind: .nvimcom.ind .r-dbi.ind
+	touch .full_R.ind
+
+.r-dbi.ind: .base_R.ind
+	exec /usr/bin/env zsh -i R/install_RMysql_RPostgres.zsh
+	touch .r-dbi.ind
+
+.nvimcom.ind: .base_R.ind
+	exec /usr/bin/env zsh -i R/install_nvimcom.zsh
+	touch .nvimcom.ind
+
+.base_R.ind: .conda.ind
+	./R/install_R_package_dependencies.sh
+	./misc/setup_ca_certs.sh
+	exec /usr/bin/env zsh -i R/setup_R_environment.zsh 
+	touch .base_R.ind
+
+.conda.ind: .zsh.ind
+	exec /usr/bin/env zsh -i misc/install_miniconda.zsh
+	touch .conda.ind
+
+.docker.ind: .packages.red
+	./misc/install_docker.sh
+	touch .docker.ind
+
+.packages.red:
+	./misc/remove_translation_packages.sh
+	touch .packages.red
+
+.zsh.ind: .packages.red
+	./zsh/install_git_and_zsh.sh
+	touch .zsh.ind
+
+.nvim.ind: .packages.red .conda.ind
+	exec /usr/bin/env zsh -i neovim/install_neovim.zsh
+	touch .nvim.ind
+
+.tmux.ind: .packages.red
+	./tmux/install_tmux_and_plugins.sh
+	touch .tmux.ind
 
 # use vagrant to test shell scripts -- set the recipe to a PHONY target
-.PHONY: test-scripts
-
-test-scripts:
+.PHONY: test-scripts clean
+test-scripts: clean
 	vagrant destroy -f
-	vagrant up --provision
-	vagrant destroy -f
+	vagrant up 
 
-# make symlinks in batches
-# TODO: figure out how to properly build these with dependencies
-.PHONY: create-symlinks
-
-CURRENT_DIR=`pwd`
-
-create-symlinks:
-	sudo ln -fs $(CURRENT_DIR)/zsh/.zshrc  ~/.zshrc
-	sudo ln -fs $(CURRENT_DIR)/tmux/.tmux.conf ~/.tmux.conf
-	sudo ln -fs $(CURRENT_DIR)/R/.Rprofile ~/.Rprofile
-	sudo ln -fs $(CURRENT_DIR)/vim/.vimrc ~/.vimrc
+clean:
+	ls -a | grep '\.\(red\|ind\|prd\|install\)' | xargs rm || \
+	  echo "all clean"

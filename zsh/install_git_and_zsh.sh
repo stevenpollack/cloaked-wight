@@ -45,12 +45,11 @@ if [ ! -f $ZSHRC ]; then # this is being called from someplace else!
   exit
 fi
 
-sudo ln -fs $ZSHRC ~/.zshrc
-
-echo "Linked ~/.zshrc ->" $ZSHRC ...
+echo "Linking ~/.zshrc ->" $ZSHRC ...
+ln -fs $ZSHRC ~/.zshrc
 
 echo "Copying yes.zsh-theme in ~/.oh-my-zsh/themes..."
-sudo cp $ZSH_THEME ~/.oh-my-zsh/themes/
+cp $ZSH_THEME ~/.oh-my-zsh/themes/
 
 # change shell to zsh
 sudo chsh -s $(which zsh) $(whoami)
