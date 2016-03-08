@@ -40,6 +40,17 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   alias startDocker="bash --login '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'"
 fi
 
+# if neovim is available, set it to the editor.
+# Otherwise use vim
+nvim --version 2>&1 > /dev/null
+NEOVIM_AVAILABLE=$?
+if [ $NEOVIM_AVAILABLE -eq 0 ]; then
+  export VISUAL=$(which nvim)
+else
+  export VISUAL=$(which vim) 
+fi
+export EDITOR="$VISUAL"
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
