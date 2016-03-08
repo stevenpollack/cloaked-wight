@@ -31,6 +31,15 @@ export SHELL=$(which zsh)
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+# set OS X specific options:
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # Append TEXLIVE to path
+  export TEXLIVE=/usr/local/texlive/2015basic/bin/x86_64-darwin
+  export PATH=$TEXLIVE:$PATH
+  # alias docker
+  alias startDocker="bash --login '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'"
+fi
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each

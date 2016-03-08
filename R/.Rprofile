@@ -1,14 +1,24 @@
 # default repo to rstudio AWS CRAN mirror:
-options(repos = c(CRAN = "https://cran.rstudio.com"))
+options(repos=c(CRAN="https://cran.rstudio.com"))
 
 # change default file download method
 # in the case where R isn't built with
 # proper libcurl support
 if (capabilities("libcurl")) {
-  options(download.file.method = "libcurl")
+  options(download.file.method="libcurl")
 } else {
-  options(download.file.method = "wget") 
-  # in the case of OS X set method to 'curl'
+ # if libcurl isn't available we want to set the download
+ # method to:
+ # OS X) 'curl'
+ # linux) 'wget'
+ 
+ sysname <- Sys.info()[['sysname']]
+
+ if (grepl(x=sysname, pattern='darwin', ignore.case=TRUE)) {
+   options(download.file.method="curl") 
+ } else {
+  options(download.file.method="wget") 
+ }
 }
 
 if(interactive()){
@@ -26,8 +36,8 @@ if(interactive()){
   require(ggplot2)
 
   # default errors to recover mode
-  # options(error = utils::recover)
+  # options(error=utils::recover)
 
   # remember to set printout length
-  options(max.print = 200L)
+  options(max.print=200L)
 }
