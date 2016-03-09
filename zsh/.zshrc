@@ -10,9 +10,6 @@ export TERM='xterm-256color'
 # have zsh start in a tmux session
 export ZSH_TMUX_AUTOSTART=false
 
-# alias for vim to nvim
-alias vim="nvim"
-
 alias sourceZshConfig="source ~/.zshrc"
 
 # Path to your oh-my-zsh installation.
