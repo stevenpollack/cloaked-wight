@@ -2,9 +2,9 @@ sudo: required
 dist: trusty
 language: c
 install: 
-  - make .nvim.ind .full_R.ind
+  - make .zsh.ind .nvim.ind .full_R.ind
 script: 
-  - source ~/.zshrc
-  - nvim --version
-  - python --version
-  - R --version
+  - source ~/.zshrc || echo ""
+  - which nvim
+  - which python | grep 'anaconda'
+  - which R | grep 'anaconda'
