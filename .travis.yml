@@ -4,6 +4,6 @@ language: c
 install: 
   - make .nvim.ind .full_R.ind
 script: 
-  - zsh -c 'nvim --version'
-  - zsh -c 'python --version'
-  - zsh -c 'R --version'
+  - zsh -i -c 'nvim --version'
+  - zsh -i -c 'python --version'
+  - zsh -i -c 'R --version'
