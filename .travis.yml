@@ -2,8 +2,8 @@ sudo: required
 dist: trusty
 language: c
 install: 
-  - touch .docker.ind
-  - make .minimally.prd
-  - make .fully.prd
+  - make .full_R.ind
 script: 
-  - Rscript -e 'cat("Provisioning done.", fill=TRUE)'
+  - nvim --version
+  - python --version
+  - R --version
