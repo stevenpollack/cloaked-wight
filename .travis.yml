@@ -2,8 +2,8 @@ sudo: required
 dist: trusty
 language: c
 install: 
-  - make .full_R.ind
+  - make .nvim.ind .full_R.ind
 script: 
-  - nvim --version
-  - python --version
-  - R --version
+  - zsh -c 'nvim --version'
+  - zsh -c 'python --version'
+  - zsh -c 'R --version'

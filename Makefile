@@ -30,6 +30,10 @@
 	exec /usr/bin/env zsh -i R/setup_R_environment.zsh 
 	touch .base_R.ind
 
+.nvim.ind: .packages.red .conda.ind
+	exec /usr/bin/env zsh -i neovim/install_neovim.zsh
+	touch .nvim.ind 
+
 .conda.ind: .zsh.ind
 	exec /usr/bin/env zsh -i misc/install_miniconda.zsh
 	touch .conda.ind
@@ -38,21 +42,17 @@
 	./misc/install_docker.sh
 	touch .docker.ind
 
-.packages.red:
-	./misc/remove_translation_packages.sh
-	touch .packages.red
-
 .zsh.ind: .packages.red
 	./zsh/install_git_and_zsh.sh
 	touch .zsh.ind
 
-.nvim.ind: .packages.red .conda.ind
-	exec /usr/bin/env zsh -i neovim/install_neovim.zsh
-	touch .nvim.ind
-
 .tmux.ind: .packages.red
 	./tmux/install_tmux_and_plugins.sh
 	touch .tmux.ind
+
+.packages.red:
+	./misc/remove_translation_packages.sh
+	touch .packages.red 
 
 # use vagrant to test shell scripts -- set the recipe to a PHONY target
 .PHONY: test-scripts clean
