@@ -104,6 +104,9 @@ INIT_VIM=$NVIM_HOME/init.vim
 echo "Linking ~/.nvimrc and $INIT_VIM..."
 ln -fs ~/.nvimrc $INIT_VIM
 
+echo "Linking ~/.vimrc to ~/.nvimrc for vim compatibility"
+ln -fs ~/.nvimrc ~/.vimrc
+
 # run the plugin installs:
 # note that we have to compile VimProc
 echo Installing neovim plugin-ins...
