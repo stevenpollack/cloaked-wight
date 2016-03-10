@@ -1,3 +1,4 @@
+" neovim vim: set sw=4:
 
 """""""""""""""""""""""""""""""""""""
 " plugin-independent editor settings
@@ -109,6 +110,7 @@ try
     " color schemes: monokai, southern lights
     Plug 'sickill/vim-monokai'
     Plug 'jalvesaq/southernlights'
+    Plug 'kristijanhusak/vim-hybrid-material'
 
     " syntax highlighting
     " markdown
@@ -116,7 +118,7 @@ try
     call plug#end()
     
     if isdirectory(g:plugs['southernlights'].dir)
-	colorscheme southernlights
+	colorscheme hybrid_reverse
     endif
 
     " use vim-bbye to close buffers
@@ -152,7 +154,7 @@ try
 	"let g:airline_symbols = {}
 	"let g:airline_symbols.space = ' '
 	set laststatus=2
-	let g:airline_theme='light'
+	let g:airline_theme='hybridline'
 	let g:airline#extensions#tabline#enabled = 1
 	let g:airline_powerline_fonts = 1 
     endif
