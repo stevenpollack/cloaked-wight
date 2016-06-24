@@ -117,7 +117,8 @@ try
     Plug 'tpope/vim-markdown' 
     call plug#end()
     
-    if isdirectory(g:plugs['southernlights'].dir)
+    if isdirectory(g:plugs['vim-hybrid-material'].dir)
+	set background=dark
 	colorscheme hybrid_reverse
     endif
 
