@@ -5,8 +5,7 @@ cat > tmp.R <<EOT
 options(unzip = 'internal',
         repos = c(CRAN = "https://cran.rstudio.com")); 
 install.packages("setwidth");
-devtools::install_github(c("jalvesaq/nvimcom",
-			   "jalvesaq/colorout"))
+devtools::install_github(c("jalvesaq/colorout"))
 EOT
 
 Rscript tmp.R
