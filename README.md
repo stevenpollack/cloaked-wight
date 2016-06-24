@@ -7,7 +7,7 @@ Repo for my various profile and config files
   
 ### Usage:
 ```
-source full_provision.sh
+make .install
 ```
 Will install:
 
