@@ -61,13 +61,14 @@ UBUNTU_VERSION=$(lsb_release -c | sed -e 's/Codename:\s*\(\w\)\w*/\1/g')
 VERSION_IS_GOOD=$(check_tmux_version)
 
 if [ ! "$VERSION_IS_GOOD" = "TRUE" ]; then
-  if [ ! "$UBUNTU_VERSION" = "w" ]; then
+  if [ "$UBUNTU_VERSION" = "t" ]; then
     echo "Installig the latest version of tmux in pi-rho PPA..."
     install_tmux $UBUNTU_VERSION
     VERSION_IS_GOOD=$(check_tmux_version)
   else
     echo "Installing latest version of tmux via apt-get..."
     sudo apt-get install -y tmux > /dev/null
+    VERSION_IS_GOOD=$(check_tmux_version)
   fi
 fi
 
