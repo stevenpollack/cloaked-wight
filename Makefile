@@ -13,16 +13,16 @@
 .shell_tools.ind: .packages.red .zsh.ind .nvim.ind .tmux.ind
 	touch .shell_tools.ind
 
-.full_R.ind: .nvimcom.ind .r-dbi.ind
+.full_R.ind: .devtools.ind .r-dbi.ind
 	touch .full_R.ind
 
 .r-dbi.ind: .base_R.ind
 	exec /usr/bin/env zsh -i R/install_RMysql_RPostgres.zsh
 	touch .r-dbi.ind
 
-.nvimcom.ind: .base_R.ind
-	exec /usr/bin/env zsh -i R/install_nvimcom.zsh
-	touch .nvimcom.ind
+.devtools.ind: .base_R.ind
+	exec /usr/bin/env zsh -i R/install_using_devtools.zsh
+	touch .devtools.ind
 
 .base_R.ind: .conda.ind
 	./R/install_R_package_dependencies.sh
@@ -37,6 +37,10 @@
 .conda.ind: .zsh.ind
 	exec /usr/bin/env zsh -i misc/install_miniconda.zsh
 	touch .conda.ind
+
+.nodejs.ind: .packages.red
+	./misc/install_nodejs.sh
+	touch .nodejs.ind
 
 .docker.ind: .packages.red
 	./misc/install_docker.sh
@@ -55,7 +59,12 @@
 	touch .packages.red 
 
 # use vagrant to test shell scripts -- set the recipe to a PHONY target
-.PHONY: test-scripts clean
+.PHONY: test-scripts clean container
+
+container:
+	docker build -t cloaked-wight .
+	docker run -it cloaked-wight
+
 test-scripts: clean
 	vagrant destroy -f
 	vagrant up 
