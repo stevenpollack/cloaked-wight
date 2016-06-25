@@ -114,7 +114,10 @@ try
 
     " syntax highlighting
     " markdown
+    " Docker
     Plug 'tpope/vim-markdown' 
+    Plug 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
+
     call plug#end()
     
     if isdirectory(g:plugs['vim-hybrid-material'].dir)
